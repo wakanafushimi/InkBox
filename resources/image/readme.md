@@ -1,2 +1,2 @@
-put image file here
-スクリーンショット～は無視してください
+put image file here<br>
+"スクリーンショット～"は無視してください
