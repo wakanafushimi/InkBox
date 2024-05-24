@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>未来郵便局</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+<meta name="description" content="新規作成画面">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" href="common.css">
+<link rel="stylesheet" type="text/css" href="read-write.css">
+
+<script src="read-write.js" defer></script>
+
+</head>
+
+<body>
+    <header class="fix_menu">
+        <div id="home" class="header-logo">
+        <a href="#">
+        <img src="images/logo2.png" alt="">
+        </a>
+        </div>
+        <input type="checkbox" id="switch">
+        <label for="switch">
+        <p><span></span></p>
+        </label>
+        <nav id="navwrap">
+        <ul class="header_menu">
+        <li><a href="#menu-home">HOME</a></li>
+        <li><a href="#menu-write">WRITE</a></li>
+        <li><a href="#menu-read">READ</a></li>
+        <li><a href="#menu-logout">LOGOUT</a></li>
+        </ul>
+        </nav>
+    </header>
+
+        <h1>READ</h1>
+
+  <div class="tab">
+    <ul class="tab__menu">
+      <li class="tab__menu-item is-active" data-tab="01">新しい手紙</li>
+      <li class="tab__menu-item" data-tab="02">
+        過去に貰った手紙</li>
+
+    </ul>
+    <div class="tab__panel">
+
+      <div class="tab__panel-box tab__panel-box001 is-show" data-panel="01">
+        <p class="tab__panel-text">新着の手紙を表示</p>
+      </div>
+
+      <div class="tab__panel-box tab__panel-box002" data-panel="02">
+        <p class="tab__panel-text">保存した手紙一覧を表示</p>
+      </div>
+    </div>
+  </div>
+  
+  <footer id="footer">
+    <p id="page-top"><a href="#">Page Top</a></p> 
+    <small>&copy; copyright.</small>  
+  </footer>
+  
+
+</body>
+</html>

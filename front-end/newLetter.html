@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>未来郵便局</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="common.css">
+<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-2-2/css/9-2-2.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-10/css/5-1-10.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-6/js/8-1-6.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stickyfill/2.1.0/stickyfill.min.js"></script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-10/js/5-1-10.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="newLetter.css">
+</head>
+
+<body>
+    <header class="fix_menu">
+        <div id="home" class="header-logo">
+        <a href="#">
+        <img src="images/logo2.png" alt="">
+        </a>
+        </div>
+        <input type="checkbox" id="switch">
+        <label for="switch">
+        <p><span></span></p>
+        </label>
+        <nav id="navwrap">
+        <ul class="header_menu">
+        <li><a href="#manu-home">HOME</a></li>
+        <li><a href="#menu-write">WRITE</a></li>
+        <li><a href="#menu-read">READ</a></li>
+        <li><a href="#menu-logout">LOGOUT</a></li>
+        </ul>
+        </nav>
+    </header>
+
+        <a href="menu-write.html">前の画面に戻る</a>
+    
+  <div id="container">
+
+   
+  <main id="main-area">
+    <section id="area-1">
+        <h2>1. 手紙の各概要を記入欄に記入して下さい。</h2>
+        <div class="form-container">
+            <div class="form-group">
+                <label for="letter-title">タイトル :</label>
+                <input type="text" id="letter-title" name="letter-title" placeholder="Title of letter">
+            </div>
+            <div class="form-group">
+                <label for="sender-name">送信者名 :</label>
+                <input type="text" id="sender-name" name="sender-name" placeholder="Your name (From)">
+            </div>
+            <div class="form-group">
+                <label for="receiver-name">受信者名 :</label>
+                <input type="text" id="receiver-name" name="receiver-name" placeholder="Recipient name (To)">
+            </div>
+
+           
+            
+        </div>
+        
+        </section>
+
+
+
+
+        <style>
+        
+        
+        .qr-code-options-container {
+          width: 100%;
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        
+      
+        
+        .radio-tile-group {
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+        }
+        
+        .input-container {
+          position: relative;
+          height: 3rem;
+          width: auto;
+          margin: 0.5rem;
+        }
+        
+        .radio-button {
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          cursor: pointer;
+        }
+        
+        .radio-tile {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
+          padding: 15px;
+          border: 1px solid #aaa;
+          width: 310px;
+          
+        }
+        
+        .radio-tile-label {
+          text-align: center;
+          font-size: 1rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-radius: 5px;
+          padding: 0.5rem 1rem;
+        }
+        
+        .radio-button:checked + .radio-tile {
+          background-color: #345963;
+          color: white;
+        }
+        
+        .radio-button:checked + .radio-tile .radio-tile-label {
+          color: white;
+        }
+        
+        .send-to-sender,
+        .send-to-receiver,
+        .password-container {
+          display: none;
+          margin-top: 20px;
+        }
+        
+        .form-container {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-top: 10px;
+        }
+        
+       
+        .password-input {
+          padding: 0.5rem;
+          font-size: 1rem;
+          border: 1px solid #aaa;
+          outline: none;
+          width: 100%;
+        }
+        
+        .qr-code-options-container{
+            width:100%;
+            padding:0;
+
+        }
+         </style>
+       
+          <div class="qr-code-options-container">
+            <section id="area-2">
+              <h2>2. 手紙のQRコードの送信先を選択してください。</h2>
+              <p style="text-align: center;">作成した手紙はQRコードから読み込んで開きます。</p>
+          
+              <div class="radio-tile-group">
+                <div class="input-container">
+                  <input id="receiver" class="radio-button" type="radio" name="recipient" />
+                  <div class="radio-tile">
+                    <label for="receiver" class="radio-tile-label">相手のメールアドレス</label>
+                  </div>
+                </div>
+        
+                <div class="input-container">
+                  <input id="self" class="radio-button" type="radio" name="recipient" />
+                  <div class="radio-tile">
+                    <label for="self" class="radio-tile-label">自分のメールアドレス</label>
+                  </div>
+                </div>
+              </div>
+        
+              <div id="send-to-sender" class="send-to-sender">
+                <p style="text-align: center;">
+                  手紙の作成直後、あなたのメールからQRコードが届きます。
+                  <br>のちほどメールからQRコードをご確認ください。<br>(相手先には送信されません)
+                </p>
+              </div>
+        
+              <div id="send-to-receiver" class="send-to-receiver">
+                <h3 style="text-align: center;">2-2. 相手先に送信する日にちと時間を指定してください。</h3>
+                <div class="form-container">
+                  <div class="form-group">
+                    <label for="send-date">日にち :</label>
+                    <input type="date" id="send-date" name="send-date">
+                  </div>
+                  <div class="form-group">
+                    <label for="send-time">時間 :</label>
+                    <input type="time" id="send-time" name="send-time">
+                  </div>
+                </div>
+                <p style="text-align: center;">
+                  手紙の作成後、QRコードは指定された時間に直接<br>お相手のメールアドレス先に送信されます。
+                </p>
+              </div>
+            </section>
+        
+            <section id="area-3" style="background-color: white;">
+              <h2>3. 手紙にパスワードを追加しますか？</h2>
+              <p style="text-align: center;">受信者がログインしていない場合に手紙を開く直前に要求されます。</p>
+              <div class="radio-tile-group">
+                <div class="input-container">
+                  <input id="yes" class="radio-button" type="radio" name="password-choice" />
+                  <div class="radio-tile">
+                    <label for="yes" class="radio-tile-label">はい</label>
+                  </div>
+                </div>
+                <div class="input-container">
+                  <input id="no" class="radio-button" type="radio" name="password-choice" />
+                  <div class="radio-tile">
+                    <label for="no" class="radio-tile-label">いいえ</label>
+                  </div>
+                </div>
+              </div>
+              <div id="password-container" class="password-container">
+                <input type="password" id="password" class="password-input" placeholder="手紙のパスワードを入力してください" />
+              </div>
+            </section>
+          </div>
+          <script>document.addEventListener('DOMContentLoaded', function() {
+            const recipientRadios = document.getElementsByName('recipient');
+            const passwordChoiceRadios = document.getElementsByName('password-choice');
+            const sendToSenderDiv = document.getElementById('send-to-sender');
+            const sendToReceiverDiv = document.getElementById('send-to-receiver');
+            const passwordContainerDiv = document.getElementById('password-container');
+          
+            recipientRadios.forEach(radio => {
+              radio.addEventListener('change', function() {
+                if (radio.id === 'receiver') {
+                  sendToSenderDiv.style.display = 'none';
+                  sendToReceiverDiv.style.display = 'block';
+                } else if (radio.id === 'self') {
+                  sendToSenderDiv.style.display = 'block';
+                  sendToReceiverDiv.style.display = 'none';
+                }
+              });
+            });
+          
+            passwordChoiceRadios.forEach(radio => {
+              radio.addEventListener('change', function() {
+                if (radio.id === 'yes') {
+                  passwordContainerDiv.style.display = 'block';
+                } else if (radio.id === 'no') {
+                  passwordContainerDiv.style.display = 'none';
+                }
+              });
+            });
+          });
+          </script>
+
+
+      <section id="area-4">
+      <h2>４. お好みの封筒と手紙の柄、フォントの種類を1つずつ選択肢から選んで下さい。</h2>
+<ul class="accordion-area">
+    <li>
+        <section>
+            <div class="title-wrapper">
+                <h3 class="title">封筒：</h3>
+                <p class="selected-text"></p>
+            </div>
+
+            <div class="box">
+
+                <div class="option-box">
+                    <label><input type="radio" name="envelope" value="Option1" id="env1"> Option 1</label>
+                    <img src="images/env1.png" aria-labelledby="env1">
+                </div>
+                
+                <div class="option-box">
+                    <label><input type="radio" name="envelope" value="Option2" id="env2"> Option 1</label>
+                    <img src="images/env2.png" aria-labelledby="env2">
+                </div>
+                
+                <div class="option-box">
+                    <label><input type="radio" name="envelope" value="Option3" id="env3"> Option 1</label>
+                    <img src="images/env3.png" aria-labelledby="env3">
+                </div>
+                
+                <div class="option-box">
+                    <label><input type="radio" name="envelope" value="Option4" id="env4"> Option 1</label>
+                    <img src="images/env4.png" aria-labelledby="env4">
+                </div>
+                
+                <div class="option-box">
+                    <label><input type="radio" name="envelope" value="Option5" id="env5"> Option 1</label>
+                    <img src="images/env4.png" aria-labelledby="env5">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="envelope" value="Option6" id="env6"> Option 1</label>
+                    <img src="images/env6.png" aria-labelledby="env6">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="envelope" value="Option7" id="env7"> Option 1</label>
+                    <img src="images/env7.png" aria-labelledby="env7">
+                </div>
+                
+                <div class="option-box">
+                    <label><input type="radio" name="envelope" value="Option8" id="env8"> Option 1</label>
+                    <img src="images/env8.png" aria-labelledby="env8">
+                </div>
+                
+                <div class="option-box">
+                    <label><input type="radio" name="envelope" value="Option9" id="env9"> Option 1</label>
+                    <img src="images/env9.png" aria-labelledby="env9">
+                </div>
+             </div>
+        </section>
+    </li>
+
+
+    <li>
+        <section>
+            <div class="title-wrapper">
+                <h3 class="title">手紙：</h3>
+                <p class="selected-text"></p>
+            </div>
+            <div class="box">
+                <div class="option-box">
+                    <label><input type="radio" name="letter" value="Option 1" id="letter1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="letter1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="letter" value="Option 1" id="letter1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="letter1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="letter" value="Option 1" id="letter1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="letter1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="letter" value="Option 1" id="letter1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="letter1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="letter" value="Option 1" id="letter1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="letter1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="letter" value="Option 1" id="letter1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="letter1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="letter" value="Option 1" id="letter1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="letter1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="letter" value="Option 1" id="letter1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="letter1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="letter" value="Option 1" id="letter1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="letter1">
+                </div>
+            </div>
+        </section>
+    </li>
+
+    <li>
+        <section>
+            <div class="title-wrapper">
+                <h3 class="title">フォント：</h3>
+                <p class="selected-text"></p>
+            </div>
+            <div class="box">
+
+                <div class="option-box">
+                    <label><input type="radio" name="font" value="Option 1" id="font1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="font1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="font" value="Option 1" id="font2"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="font2">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="font" value="Option 1" id="font1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="font1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="font" value="Option 1" id="font2"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="font2">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="font" value="Option 1" id="font1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="font1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="font" value="Option 1" id="font2"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="font2">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="font" value="Option 1" id="font1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="font1">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="font" value="Option 1" id="font2"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="font2">
+                </div>
+
+                <div class="option-box">
+                    <label><input type="radio" name="font" value="Option 1" id="font1"> Option 1</label>
+                    <img src="images/letter1.png" aria-labelledby="font1">
+                </div>
+            </div>
+        </section>
+    </li>
+</ul>
+</section>
+
+    <section id="area-5" style="background-color: white;">
+        <h2>５. 手紙に添付する画像ファイルを選択してください。（任意）</h2>
+<div class="form-container">
+    <div class="form-group">
+        <input type="file" id="image-upload" name="image-upload" accept="image/*">
+        <button id="clear-image" style="display:none;">削除</button>
+    </div>
+    <div class="image-preview" id="image-preview">
+        <!-- ここにプレビュー画像を表示 -->
+        <img src="path/to/image.jpg" alt="画像の説明" style="display:none">
+    </div>
+</div>
+
+<!-- モーダルウィンドウ -->
+<div id="modal">
+    <img id="modal-image" src="" alt="拡大表示される画像">
+</div>
+
+<!-- JavaScript -->
+<script>
+    // プレビューをクリックしたときの処理
+    document.getElementById('image-preview').addEventListener('click', function() {
+        var modal = document.getElementById('modal');
+        var modalImg = document.getElementById('modal-image');
+        // クリックされたプレビュー画像のソースURLを取得してモーダルウィンドウに表示
+        modalImg.src = this.querySelector('img').src;
+        modal.style.display = 'block';
+    });
+
+    // モーダルウィンドウをクリックしたときに非表示にする処理
+    document.getElementById('modal').addEventListener('click', function() {
+        this.style.display = 'none';
+    });
+
+    // 画像を選択したときの処理
+    document.getElementById('image-upload').addEventListener('change', function(event) {
+        var preview = document.getElementById('image-preview');
+        var clearButton = document.getElementById('clear-image');
+        preview.innerHTML = ''; // プレビューを初期化
+        var file = event.target.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img); // 選択した画像をプレビューに追加
+                clearButton.style.display = 'inline-block'; // 選択したらボタンを表示
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // 選択した画像を解除する処理
+    document.getElementById('clear-image').addEventListener('click', function() {
+        document.getElementById('image-upload').value = ''; // input[type="file"] の値をクリア
+        document.getElementById('image-preview').innerHTML = ''; // プレビューをクリア
+        this.style.display = 'none'; // ボタンを非表示にする
+    });
+
+</script>
+      <!--/area4--></section>
+
+      <section id="area-6">
+        <h2>６. 手紙の内容を記入してください。（800文字以内）</h2>
+<div class="form-container">
+    <div class="form-group">
+        <textarea id="letter-content" name="letter-content" placeholder="手紙の内容を入力してください">
+
+        </textarea>
+    </div>
+</div> 
+      <!--/area5--></section>
+
+  <!--/main--></main>
+  
+  <aside id="sub-area">
+  <nav><br>
+    <h3>手紙の新規作成手順</h3>
+    <ul id="g-navi">
+      <li><a href="#area-1">１．手紙の概要の記入</a></li>
+      <li><a href="#area-2">２．送信先・送信時間の指定</a></li>
+      <li><a href="#area-3">３．パスワード有無の選定</a></li>
+      <li><a href="#area-3">４．柄・フォントの選択</a></li>
+      <li><a href="#area-4">５．添付画像の選択</a></li>
+      <li><a href="#area-5">６．手紙の内容の記入</a></li>
+    </ul><br><br>
+    
+    <button id="reset">全てリセット</button><br><br>
+    <button id="save">保存して次に進む</button><br><br>
+  </nav>
+  </aside>
+  <!--/container--></div>
+
+  <footer id="footer">
+    <p id="page-top"><a href="#">Page Top</a></p> 
+    <small>&copy; copyright.</small>  
+  </footer>
+
+<script src="nav.js"></script>
+
+</body>
+</html>
