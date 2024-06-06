@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>未来郵便局</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+<meta name="description" content="新規作成画面">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" href="common.css">
+<link rel="stylesheet" type="text/css" href="read-write.css">
+
+<script src="read-write.js" defer></script>
+<script src="nav.js" defer></script>
+
+</head>
+
+<body>
+  <header class="fix_menu">
+    <div id="home" class="header-logo">
+        <a href="#">
+            <img src="images/logo2.png" alt="">
+        </a>
+    </div>
+    <input type="checkbox" id="switch">
+    <label for="switch">
+        <p><span></span></p>
+    </label>
+    <nav id="navwrap">
+        <ul class="header_menu">
+            <li><a href="#manu-home">HOME</a></li>
+            <li><a href="#menu-write" class="menu-now">WRITE</a></li>
+            <li><a href="#menu-read">READ</a></li>
+            <li><a href="#menu-logout" id="logout">LOGOUT</a></li>
+        </ul>
+    </nav>
+  </header><br><br>
+  
+  
+    <div class="tab" id="write-tab">
+      <ul class="tab__menu">
+        <li class="tab__menu-item is-active" data-tab="01">手紙の作成</li>
+        <li class="tab__menu-item" data-tab="02" style="border-left: 3px solid white; border-right: 3px solid white;">下書きの手紙</li>
+        <li class="tab__menu-item" data-tab="03">送信済みの手紙</li>
+      </ul>
+      <div class="tab__panel">
+        <div class="tab__panel-box tab__panel-box001 is-show" data-panel="01">
+    
+          <div class="my-letter-container01">
+            <div class="write-top" style="padding: 0;">
+              
+              <br><p class="tab__panel-text" style="color: white; line-height: 2;">
+                <span style="font-weight: bolder; font-size: 18px;">新しい手紙の作成手順と留意点</span><br><br>
+              
+                １． まず手紙のタイトル、自分の名前と宛先名を指定します<br>
+                ２． 手紙のQRコードの送り先を指定します<br>
+                   <span style="font-size: 13px; color: rgb(166, 196, 194); margin-left: 30px;">┗ QRコードを送信相手のメールアドレスに送る場合は、送信日時を指定します</span><br>
+                ３． 手紙にパスワードをかける場合はパスワードを指定します<br>
+                ４． 封筒と便箋、フォントを各々選びます<br>
+                ５． 画像を添付したい場合は画像をアップロードします<br>
+                ６． 最後に手紙の内容を記入したら「次に進む」をクリックします<br>
+                <span style="font-size: 13px; color: rgb(166, 196, 194); margin-left: 30px;">┗ 作成した内容をもとにプレビューが表示されます</span><br>
+                ７． プレビューで最終確認を終えたら「送信する」クリックします<br>
+                <span style="font-size: 13px; color: rgb(166, 196, 194); margin-left: 30px;">┗ QRコードを指定したメールアドレスに送信し、手紙を受け渡し可能にします<span style="font-size: 13px; color: rgb(166, 196, 194);">
+                  <br> <br>
+
+                  <span style="font-size: 13px; color: rgb(199, 230, 227);">＊ 操作のしやすさからPC画面上での作成を推奨します<br>
+                ＊ 相手を喜ばせたり、励ますような素敵な手紙を作成しましょう</span><br>
+              </p>
+            </div>
+            <div class="write-top">
+              <script src="nav.js"></script>
+              <div class="envelope">
+                <div class="envelope__letter">
+                  <a href="newLetter.html" style="text-decoration: none; color:  rgb(60, 60, 94);">
+                  <p style="font-size: 15px; font-weight: bolder;">未来に手紙を送ろう！</p>
+                  <button id="start-create" style="text-align:right;">新規作成する</button>
+                </a>
+                </div>
+                <div class="envelope__triangle envelope__triangle--down"></div>
+                <div class="envelope__triangle envelope__triangle--right"></div>
+                <div class="envelope__triangle envelope__triangle--left"></div>
+              </div>
+              <script>
+                $(document).ready(function() {
+                  // タイトルのフェードイン
+                  setTimeout(function() {
+                    $('#page-title').addClass('fade-in');
+                  }, 500); // タイトルのフェードインを500ms遅らせる
+                  setTimeout(function() {
+                    $('.envelope').addClass('is-open');
+                  }, 1000);
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+        <div class="tab__panel-box tab__panel-box002" data-panel="02">
+          <p class="tab__panel-text">下書き保存した手紙を一覧表示</p>
+          <div class="my-letter-container">
+            <div class="my-letter-box">
+              <img src="images/env1.png" alt="Envelope Image 1">
+              <ul>
+                <li>TITLE OF LETTER</li>
+                <li>DATE RECEIVED</li>
+                <li>SENDER NAME FROM</li>
+              </ul>
+            </div>
+            <div class="my-letter-box">
+              <img src="images/env1.png" alt="Envelope Image 2">
+              <ul>
+                <li>TITLE OF LETTER</li>
+                <li>DATE RECEIVED</li>
+                <li>SENDER NAME FROM</li>
+              </ul>
+            </div>
+            <div class="my-letter-box">
+              <img src="images/env1.png" alt="Envelope Image 3">
+              <ul>
+                <li>TITLE OF LETTER</li>
+                <li>DATE RECEIVED</li>
+                <li>SENDER NAME FROM</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab__panel-box tab__panel-box003" data-panel="03">
+          <p class="tab__panel-text">送信済みの手紙を一覧表示</p>
+          <div class="my-letter-container">
+            <div class="my-letter-box">
+              <img src="images/env1.png" alt="Envelope Image 1">
+              <ul>
+                <li>TITLE OF LETTER</li>
+                <li>DATE RECEIVED</li>
+                <li>SENDER NAME FROM</li>
+              </ul>
+            </div>
+            <div class="my-letter-box">
+              <img src="images/env1.png" alt="Envelope Image 2">
+              <ul>
+                <li>TITLE OF LETTER</li>
+                <li>DATE RECEIVED</li>
+                <li>SENDER NAME FROM</li>
+              </ul>
+            </div>
+            <div class="my-letter-box">
+              <img src="images/env1.png" alt="Envelope Image 3">
+              <ul>
+                <li>TITLE OF LETTER</li>
+                <li>DATE RECEIVED</li>
+                <li>SENDER NAME FROM</li>
+              </ul>
+            </div>
+
+            <div class="my-letter-box">
+              <img src="images/env1.png" alt="Envelope Image 3">
+              <ul>
+                <li>TITLE OF LETTER</li>
+                <li>DATE RECEIVED</li>
+                <li>SENDER NAME FROM</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <footer id="footer">
+    <p id="page-top"><a href="#">Page Top</a></p>
+    <small>&copy; 未来郵便局 2024</small>
+  </footer>
+</body>
+</html>
