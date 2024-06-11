@@ -1,4 +1,4 @@
- //////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
  // パスワードの表示/非表示をアイコンボタンで切り替える関数
 
  function togglePasswordVisibility(inputId, iconId) {
@@ -57,6 +57,25 @@ document.addEventListener('DOMContentLoaded', function() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+document.addEventListener('DOMContentLoaded', () => {
+  // 既存のコード...
+
+  // 文字数カウント用のコード
+  const letterContent = document.getElementById('letter-content');
+  const charCount = document.getElementById('char-count');
+
+  letterContent.addEventListener('input', () => {
+    const currentLength = letterContent.value.length;
+    charCount.textContent = `[ ${currentLength}/400 ]`;
+    
+    if (currentLength > 400) {
+      alert('400文字を超える入力はできません。');
+      letterContent.value = letterContent.value.substring(0, 400);
+      charCount.textContent = `[ 400/400 ]`;
+     
+    }
+  });
+});
 
 document.getElementById('save-preview').addEventListener('click', function(event) {
   // フォームが送信されるのを防ぐ
@@ -79,7 +98,7 @@ document.getElementById('save-preview').addEventListener('click', function(event
 
   if (!letterForm.checkValidity()) {
     // フォームが無効な場合はアラートを表示
-    alert('すべての必須項目を入力してください。');
+    alert('すべての必須項目を入力した後にプレビューにお進みください。');
   } else {
     // フォームが有効な場合はデータを取得してプレビューに遷移
 
@@ -124,4 +143,77 @@ document.getElementById('save-preview').addEventListener('click', function(event
     // Redirect to preview page
     window.location.href = 'preview.html';
   }
+});
+
+
+ $(document).ready(function() {
+  // ページ内リンクのアニメーション
+  $('#g-navi a').on('click', function(event) {
+    // aタグのデフォルトの動作をキャンセル
+    event.preventDefault();
+    
+    // リンク先のハッシュを取得
+    var target = $(this).attr('href');
+    
+    // スムーズにスクロール
+    $('html, body').animate({
+      scrollTop: $(target).offset().top
+    }, 500); // 500ミリ秒かけてスクロール
+  });
+
+  // 文字数カウント用のコード
+  const letterContent = document.getElementById('letter-content');
+  const charCount = document.getElementById('char-count');
+  const selectedLetterInfo = document.getElementById('selected-letter-info');
+
+  letterContent.addEventListener('input', () => {
+    const currentLength = letterContent.value.length;
+    charCount.textContent = `[ ${currentLength}/400 ]`;
+
+    if (currentLength > 400) {
+      alert('400文字を超える入力はできません。');
+      letterContent.value = letterContent.value.substring(0, 400);
+      charCount.textContent = `[ 400/400 ]`;
+    }
+  });
+
+  // 便箋の選択に応じて情報を更新するコード
+  const letterOptions = document.querySelectorAll('input[name="letter"]');
+  letterOptions.forEach(option => {
+    option.addEventListener('change', () => {
+      const selectedLabel = option.nextElementSibling;
+      const letterName = selectedLabel.querySelector('span').textContent;
+      const maxChars = option.dataset.maxChars;
+      selectedLetterInfo.textContent = `貴方が選択した便箋「${letterName}」の最適文字数は「MAX${maxChars}」字です。`;
+      letterContent.setAttribute('maxlength', maxChars);
+      charCount.textContent = `[ 0/${maxChars} ]`;
+      letterContent.value = ''; // テキストエリアをクリア
+    });
+  });
+
+  // ランダムテーマ提案機能
+  const themes = [
+    '感謝の気持ち',
+    '未来の自分へ',
+    '家族への愛',
+    '友人との思い出',
+    'もし魔法が使えるなら',
+    'BIG LOVE♡',
+    '人生の目標',
+    '感動した出来事',
+    '誰にも言えない秘密',
+    '旅行の思い出',
+    '貴方の黒歴史',
+    '夢や希望',
+    '美味しかったご飯',
+    '後悔の気持ち',
+    'ありがとうの言葉',
+    '困難を乗り越えた経験'
+  ];
+
+  $('#random-theme-btn').on('click', function() {
+    const randomIndex = Math.floor(Math.random() * themes.length);
+    const randomTheme = themes[randomIndex];
+    $('#random-theme-result').text(`${randomTheme}`);
+  });
 });
