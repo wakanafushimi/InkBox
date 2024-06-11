@@ -173,83 +173,57 @@ $(document).ready(function(){
 
 //////////////////////////////////////////////////////////////////////////////
   // 添付画像に関するJS
-    // プレビューをクリックしたときの処理
-    document.getElementById('image-preview').addEventListener('click', function() {
-      var modal = document.getElementById('modal');
-      var modalImg = document.getElementById('modal-image');
-      // クリックされたプレビュー画像のソースURLを取得してモーダルウィンドウに表示
-      modalImg.src = this.querySelector('img').src;
-      modal.style.display = 'block';
-  });
 
-  // モーダルウィンドウをクリックしたときに非表示にする処理
-  document.getElementById('modal').addEventListener('click', function() {
-      this.style.display = 'none';
-  });
 
-  // 画像を選択したときの処理
-  document.getElementById('image-upload').addEventListener('change', function(event) {
-      var preview = document.getElementById('image-preview');
-      var clearButton = document.getElementById('clear-image');
-      preview.innerHTML = ''; // プレビューを初期化
-      var file = event.target.files[0];
+  document.addEventListener('DOMContentLoaded', function() {
+    const imageUpload = document.getElementById('image-upload');
+    const uploadLabel = document.getElementById('upload-label');
+    const imageShow = document.getElementById('image-preview');
+    const fileNameDisplay = document.getElementById('file-name');
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modal-image');
+  
+    imageUpload.addEventListener('change', function() {
+      const file = this.files[0];
+  
       if (file) {
-          var reader = new FileReader();
-          reader.onload = function(e) {
-              var img = document.createElement('img');
-              img.src = e.target.result;
-              preview.appendChild(img); // 選択した画像をプレビューに追加
-              clearButton.style.display = 'inline-block'; // 選択したらボタンを表示
-          }
-          reader.readAsDataURL(file);
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          imageShow.innerHTML = ''; // Clear any existing images
+          imageShow.appendChild(img);
+          uploadLabel.textContent = '画像を削除';
+          fileNameDisplay.textContent = file.name; // Display the file name
+          uploadLabel.id = 'delete-label'; // Change label id to 'delete-label'
+        };
+        reader.readAsDataURL(file);
       }
+    });
+  
+    uploadLabel.addEventListener('click', function() {
+      if (this.id === 'delete-label') {
+        imageUpload.value = ''; // Clear the input value
+        imageShow.innerHTML = ''; // Clear the preview
+        fileNameDisplay.textContent = ''; // Clear the file name display
+        this.textContent = '画像をアップロード'; // Reset the label text
+        this.id = 'upload-label'; // Change label id back to 'upload-label'
+      }
+    });
+  
+    // プレビューをクリックしたときの処理
+    imageShow.addEventListener('click', function() {
+      if (imageShow.querySelector('img')) {
+        modalImage.src = imageShow.querySelector('img').src;
+        modal.style.display = 'flex';
+      }
+    });
+  
+    // モーダルウィンドウをクリックしたときに非表示にする処理
+    modal.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
   });
-
-  // 選択した画像を解除する処理
-  document.getElementById('clear-image').addEventListener('click', function() {
-      document.getElementById('image-upload').value = ''; // input[type="file"] の値をクリア
-      document.getElementById('image-preview').innerHTML = ''; // プレビューをクリア
-      this.style.display = 'none'; // ボタンを非表示にする
-  });
-
-
-
-
-$(document).ready(function() {
-  // 画像ファイルが選択された時の処理
-  $('#image-upload').on('change', function() {
-      var input = this;
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function(e) {
-      var img = new Image();
-      img.src = e.target.result;
-      img.onload = function() {
-            var width = this.width;
-            var height = this.height;
-            // 画像のサイズを指定
-            var maxWidth = 300; // 例として、最大幅を300pxに設定
-            var maxHeight = 200; // 例として、最大高さを200pxに設定
-            if (width > maxWidth || height > maxHeight) {
-            if (width / height > maxWidth / maxHeight) {
-            if (width > maxWidth) {
-                height *= maxWidth / width;
-                width = maxWidth;
-            }
-        } else {
-            if (height > maxHeight) {
-                width *= maxHeight / height;
-                height = maxHeight;
-            }
-        }
-      }
-          $('#image-preview').html('<img src="' + e.target.result + '" width="' + width + '" height="' + height + '">');
-      }
-  }
-          reader.readAsDataURL(input.files[0]);
-      }
-  });
-});
 
 //////////////////////////////////////////////////////////////////////////////
 ///topページに飛ぶボタンのアニメーション
