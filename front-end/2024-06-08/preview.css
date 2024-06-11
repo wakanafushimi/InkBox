@@ -144,7 +144,10 @@ main{
   height: auto;
   border-radius: 10px;
 }
- 
+
+#preview-envelope{
+  width: 50%;
+}
 .modal-buttons{
   display: flex; justify-content: space-around; padding-top: 50px;
 }
@@ -171,9 +174,10 @@ main{
   color: rgb(246, 246, 249);
   font-weight: bolder;
   border: 1px solid white;
-  width: 70%;
-  max-width: 600px;
-  max-height: 80vh; 
+  width: 90%;
+  width: 100%;
+  max-width: 65%;
+  max-height: 120vh; 
   overflow-y: auto; 
 }
 
