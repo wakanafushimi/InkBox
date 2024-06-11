@@ -41,6 +41,7 @@
       <div class="tab__panel">
         <div class="tab__panel-box tab__panel-box001 is-show" data-panel="01">
     
+           <!-- タブ１ -->
           <div class="my-letter-container01">
             <div class="write-top" style="padding: 0;">
               
@@ -48,29 +49,24 @@
                 <span style="font-weight: bolder; font-size: 18px;">新しい手紙の作成手順と留意点</span><br><br>
               
                 １． まず手紙のタイトル、自分の名前と宛先名を指定します<br>
-                ２． 手紙のQRコードの送り先を指定します<br>
-                   <span style="font-size: 13px; color: rgb(166, 196, 194); margin-left: 30px;">┗ QRコードを送信相手のメールアドレスに送る場合は、送信日時を指定します</span><br>
+                ２． 手紙のQRコードの送り先と日時を指定します<br>
                 ３． 手紙にパスワードをかける場合はパスワードを指定します<br>
                 ４． 封筒と便箋、フォントを各々選びます<br>
                 ５． 画像を添付したい場合は画像をアップロードします<br>
-                ６． 最後に手紙の内容を記入したら「次に進む」をクリックします<br>
-                <span style="font-size: 13px; color: rgb(166, 196, 194); margin-left: 30px;">┗ 作成した内容をもとにプレビューが表示されます</span><br>
-                ７． プレビューで最終確認を終えたら「送信する」クリックします<br>
-                <span style="font-size: 13px; color: rgb(166, 196, 194); margin-left: 30px;">┗ QRコードを指定したメールアドレスに送信し、手紙を受け渡し可能にします<span style="font-size: 13px; color: rgb(166, 196, 194);">
-                  <br> <br>
+                ６． 手紙の内容を記入したら「プレビューに進む」をクリックします<br>
+                ７． 最後に、プレビューで最終確認をし、「送信する」クリックして完了です<br><br>
 
-                  <span style="font-size: 13px; color: rgb(199, 230, 227);">＊ 操作のしやすさからPC画面上での作成を推奨します<br>
+                  <span style="font-size: 15px; color: rgb(199, 230, 227);">＊ 操作のしやすさからPC画面上での作成を推奨します<br>
                 ＊ 相手を喜ばせたり、励ますような素敵な手紙を作成しましょう</span><br>
               </p>
             </div>
             <div class="write-top">
               <script src="nav.js"></script>
               <div class="envelope">
-                <div class="envelope__letter">
-                  <a href="newLetter.html" style="text-decoration: none; color:  rgb(60, 60, 94);">
-                  <p style="font-size: 15px; font-weight: bolder;">未来に手紙を送ろう！</p>
-                  <button id="start-create" style="text-align:right;">新規作成する</button>
-                </a>
+                <div class="envelope__letter"> 
+                  <p class="start-create-p">未来に手紙を送ろう！</p>
+                  <a href="create.html" id="start-create">新規作成する</a>
+                
                 </div>
                 <div class="envelope__triangle envelope__triangle--down"></div>
                 <div class="envelope__triangle envelope__triangle--right"></div>
@@ -79,9 +75,13 @@
             </div>
           </div>
         </div>
+
+         <!-- タブ２ -->
         <div class="tab__panel-box tab__panel-box002" data-panel="02">
           <p class="tab__panel-text">下書き保存した手紙を一覧表示</p>
           <div class="my-letter-container">
+
+            <!-- こんな感じで手紙を一覧に表示します -->
             <div class="my-letter-box">
               <img src="images/env1.png" alt="Envelope Image 1">
               <ul>
@@ -90,27 +90,16 @@
                 <li>SENDER NAME FROM</li>
               </ul>
             </div>
-            <div class="my-letter-box">
-              <img src="images/env1.png" alt="Envelope Image 2">
-              <ul>
-                <li>TITLE OF LETTER</li>
-                <li>DATE RECEIVED</li>
-                <li>SENDER NAME FROM</li>
-              </ul>
-            </div>
-            <div class="my-letter-box">
-              <img src="images/env1.png" alt="Envelope Image 3">
-              <ul>
-                <li>TITLE OF LETTER</li>
-                <li>DATE RECEIVED</li>
-                <li>SENDER NAME FROM</li>
-              </ul>
-            </div>
+            
           </div>
         </div>
+
+          <!-- タブ3 -->
         <div class="tab__panel-box tab__panel-box003" data-panel="03">
           <p class="tab__panel-text">送信済みの手紙を一覧表示</p>
           <div class="my-letter-container">
+
+            <!-- こんな感じで手紙を一覧に表示します -->
             <div class="my-letter-box">
               <img src="images/env1.png" alt="Envelope Image 1">
               <ul>
@@ -119,31 +108,7 @@
                 <li>SENDER NAME FROM</li>
               </ul>
             </div>
-            <div class="my-letter-box">
-              <img src="images/env1.png" alt="Envelope Image 2">
-              <ul>
-                <li>TITLE OF LETTER</li>
-                <li>DATE RECEIVED</li>
-                <li>SENDER NAME FROM</li>
-              </ul>
-            </div>
-            <div class="my-letter-box">
-              <img src="images/env1.png" alt="Envelope Image 3">
-              <ul>
-                <li>TITLE OF LETTER</li>
-                <li>DATE RECEIVED</li>
-                <li>SENDER NAME FROM</li>
-              </ul>
-            </div>
-
-            <div class="my-letter-box">
-              <img src="images/env1.png" alt="Envelope Image 3">
-              <ul>
-                <li>TITLE OF LETTER</li>
-                <li>DATE RECEIVED</li>
-                <li>SENDER NAME FROM</li>
-              </ul>
-            </div>
+           
 
           </div>
         </div>
@@ -152,7 +117,7 @@
 
   <footer id="footer">
     <p id="page-top"><a href="#">TOP</a></p>
-    <small>&copy; 未来郵便局 2024</small>
+    <small>&#9426; Future Post Office 2024</small>
   </footer>
 
 </body>
