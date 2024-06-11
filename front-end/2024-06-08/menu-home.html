@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="common.css">
+    <script src="nav.js" defer></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.css">
 </head>
@@ -60,7 +61,6 @@
                 <h3>DELETE</h3>
                 <h5 style="font-weight: bolder;">アカウントを削除しますか？</h5>
                 <p>アカウントを削除すると作成した<br>手紙のデータは消えます</p>
-                <!-- <button class="acct-modal-btn" id="cancelBtn2">キャンセル</button> -->
                 <button class="acct-modal-btn" id="confirmDeleteBtn">アカウントを削除する</button><br>
                 <h5 class="switch-section" data-target="modalContent1">
                     ログアウトする
@@ -69,58 +69,6 @@
             
         </div>
     </div>
-
-    <script>
-
-document.addEventListener("DOMContentLoaded", function() {
-    var modal = document.getElementById("logoutModal");
-    var homeMenu = document.querySelector(".home-menu");
-    var logoutBtn = document.getElementById("logout");
-    var cancelBtn1 = document.getElementById("cancelBtn");
-    var confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
-    var confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
-    var switchSections = document.getElementsByClassName("switch-section");
-
-    logoutBtn.onclick = function() {
-        modal.style.display = "block";
-        homeMenu.classList.add("fade-out");
-    }
-
-    confirmLogoutBtn.onclick = function() {
-        // 実際のログアウト処理をここに追加
-        alert("ログアウトしました");
-        modal.style.display = "none";
-        homeMenu.classList.remove("fade-out");
-    }
-
-    confirmDeleteBtn.onclick = function() {
-        // 実際のアカウント削除処理をここに追加
-        alert("アカウントが削除されました");
-        modal.style.display = "none";
-        homeMenu.classList.remove("fade-out");
-    }
-
-    for (var i = 0; i < switchSections.length; i++) {
-        switchSections[i].onclick = function() {
-            var targetId = this.getAttribute("data-target");
-            var currentSection = this.parentElement;
-            var targetSection = document.getElementById(targetId);
-
-            currentSection.classList.add("hidden");
-            targetSection.classList.remove("hidden");
-            targetSection.classList.add("slide-in");
-        }
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-            homeMenu.classList.remove("fade-out");
-        }
-    }
-});
-
-    </script>
     
     <div class="home-menu">
         <a id="menu-write" href="menu-write.html" >
@@ -175,68 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
-<script>
-
-    
-    feather.replace();
-
-    // JavaScript to add classnames to the HTML-element on toggle
-    var html = document.documentElement;
-    var radios = document.getElementsByName('themes'); 
-
-    // Variable to store the Vanta effect instance
-    var vantaEffect;
-
-    function applyVantaEffect() {
-        if (vantaEffect) {
-            vantaEffect.destroy();
-        }
-        vantaEffect = VANTA.BIRDS({
-            el: "#background",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            backgroundColor: 0x110f20,
-            color1: 0x568dac,
-            color2: 0x9473b3,
-            birdSize: 1,
-            separation: 600.00
-        });
-    }
-
-    for (var i = 0; i < radios.length; i++) {
-        radios[i].addEventListener('change', function() {
-            html.classList.remove('light-theme', 'dark-theme', 'birds-theme');
-            if (this.id === 'light-theme') {
-                html.classList.add('light-theme');
-                if (vantaEffect) {
-                    vantaEffect.destroy();
-                    vantaEffect = null;
-                    document.getElementById('background').style.display = 'none';
-                }
-            } else if (this.id === 'dark-theme') {
-                html.classList.add('dark-theme');
-                if (vantaEffect) {
-                    vantaEffect.destroy();
-                    vantaEffect = null;
-                    document.getElementById('background').style.display = 'none';
-                }
-            } else if (this.id === 'birds-theme') {
-                html.classList.add('birds-theme');
-                document.getElementById('background').style.display = 'block';
-                applyVantaEffect();
-            }
-        });
-    }
-
-window.addEventListener('load', function() {
-    document.getElementById('birds-theme').checked = true;
-    html.classList.add('birds-theme');
-    applyVantaEffect(); 
-});
-</script>
+<script src="theme.js" ></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
