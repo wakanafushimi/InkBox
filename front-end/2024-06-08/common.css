@@ -370,6 +370,7 @@ ul,li{
   width: 96%;
   padding:20px;
   max-width: 900px;
+  text-align: center;
 }
 
 .form-group label {
@@ -407,7 +408,9 @@ ul,li{
   max-height: 90%;
 }
 
-#area-1,#area-2, #area-4{
+body, #area-6,#area-1,#area-2,
+#area-3, #area-4, #area-5,
+.form-group, input{
   background: white;
 }
 
@@ -424,11 +427,11 @@ textarea {
 #image-preview img {
   width: 80px;
   height: fit-content;
-  margin-left: 10px; /* マージンを少し小さくする */
-  margin-top: -3px; /* ボタンよりも少し上に配置されるのを修正する */
+  margin-left: 10px; 
+  margin-top: -3px; 
   cursor: pointer;
   transition: all .3s ;
-  vertical-align: middle; /* 垂直方向の中央揃えを追加 */
+  vertical-align: middle; 
   border: 2px solid #aaa;
 }
 
@@ -702,6 +705,7 @@ color:  #b4cbcf;
     cursor: pointer;
     transition: background-color 0.5s;
 }
+
 #random-theme-result {
     display: block;
     text-align: center;
@@ -1307,11 +1311,6 @@ height: 160px;
 }
 
 
-body, #area-6, #area-3, 
-.form-group, input{
-background: white;
-}
-
 @keyframes fadeIn {
 from {
 opacity: 0;
@@ -1828,7 +1827,6 @@ button, .theme label{
     --c-text-secondary: #d3d5db;
     --c-border-primary: #454545;
     --c-bg-body: #262935;
-    /* --c-bg-primary: #323339; */
     --c-bg-secondary: #33323f;
     --c-bg-button: #4e505d;
     --slider-shadow: inset 0 1px 1px #767676;
@@ -1838,9 +1836,53 @@ button, .theme label{
     --c-text-primary: #edeeef;
     --c-text-secondary: #d4d7e1;
     --c-border-primary: #323232;
-    /* --c-bg-body: #000000; */
-    /* --c-bg-primary: #1b1d23; */
     --c-bg-secondary: #000001;
     --c-bg-button: #343844;
     --slider-shadow: inset 0 1px 1px #555;
+}
+
+#sub-area button{
+  font-weight: bolder;
+}
+
+#sub-area{
+  width: 400px; 
+  margin: 0px auto 0px ; 
+}
+
+#sub-area p{
+  margin: 0px 0px 20px; 
+  font-size: 13px;
+}
+
+.image-preview{
+  display: inline-block;
+}
+
+#sub-area nav{
+  padding: 35px 40px 30px;  
+  border: 1px solid #c2c2c2; 
+  box-shadow: none;
+}
+
+#sub-area h3{
+  text-align: center; 
+  border-bottom: 1px solid #aaa; 
+  padding-bottom: 10px;
+   margin-bottom: 20px; 
+}
+.font1 {
+  color: black;
+}
+
+#area6 p{
+text-align: center;
+}
+
+.create-btn{
+  display: flex; 
+  justify-content: space-around;  
+  gap: 20px; margin: 20px 0 10px; 
+  border-top: 1px solid #aaa; 
+  padding-top: 20px;
 }
