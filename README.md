@@ -1,6 +1,9 @@
 # InkBox
 
 手紙を送れるサービス
+
+<img src="https://github.com/wakanafushimi/InkBox/assets/86924333/7c2f77bb-6e84-41d5-b059-0d5dd38bb8d6" alt="logo" width="500">
+
 <br><br>
 
 
@@ -34,3 +37,7 @@ SNSだけでは伝わらない、新しい文通してみませんか。
 6. 画像を添付したい場合は画像をアップロードしてください
 
 7. 手紙の内容を記入してください
+
+
+
+
