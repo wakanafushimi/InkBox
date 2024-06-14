@@ -95,16 +95,16 @@ main{
 }
 
 .new-letter-box {
-  opacity: 0; /* 最初は透明にする */
-  animation: fadeIn 3s ease forwards; /* fadeInアニメーションを適用 */
+  opacity: 0; 
+  animation: fadeIn 3s ease forwards; 
 }
 
 @keyframes fadeIn {
   from {
-    opacity: 0; /* 開始時は透明 */
+    opacity: 0; 
   }
   to {
-    opacity: 1; /* 終了時は不透明 */
+    opacity: 1;
   }
 }
 
@@ -126,7 +126,7 @@ main{
   width: fit-content;
   background: hsla(0, 0%, 0%, 0.685);
   box-shadow: 0 0 30px rgba(252, 251, 251, 0.5); 
-  position: fixed; /* または position: absolute; */
+  position: fixed; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -149,7 +149,9 @@ main{
   width: 50%;
 }
 .modal-buttons{
-  display: flex; justify-content: space-around; padding-top: 50px;
+  display: flex; 
+  justify-content: space-around; 
+  padding-top: 50px;
 }
 
 #preview-title, #preview-title2{
@@ -160,7 +162,9 @@ main{
 }
 
 .modal-sender{
-  text-align: right;border-bottom: 1px solid white; padding-bottom: 50px;
+  text-align: right;
+  border-bottom: 1px solid white; 
+  padding-bottom: 50px;
 }
 
 .letter-modal-content {
@@ -203,8 +207,8 @@ main{
 @media screen and (max-width:768px) {
   .new-letter-box {
     padding: 10px;
-    width: 80%; /* 画面幅の80%に設定 */
-    margin: 0 auto; /* 横方向に中央揃え */
+    width: 80%;
+    margin: 0 auto; 
     line-height: .4;
   }
 
@@ -270,23 +274,23 @@ small{
 
  /* スクロール可能なモーダルのスタイル */
  .letter-modal-content {
-  max-height: 80vh; /* モーダルの高さを制限してスクロールを発生させる */
-  overflow-y: auto; /* 縦方向にスクロール可能にする */
-}
+  max-height: 80vh; 
+  overflow-y: auto; 
+ }
 
 /* Webkitベースのブラウザ用（Chrome、Safari） */
 .letter-modal-content::-webkit-scrollbar {
-  width: 8px; /* スクロールバーの幅 */
+  width: 8px; 
 }
 
 .letter-modal-content::-webkit-scrollbar-track {
-  background: black; /* スクロールバーのトラック（背景） */
+  background: black; 
 }
 
 .letter-modal-content::-webkit-scrollbar-thumb {
   background-color: #888; /* スクロールバーのサム（ハンドル） */
-  border-radius: 10px; /* 角を丸くする */
-  border: 3px solid rgba(0, 0, 0, 0);  /* サムの周りの境界 */
+  border-radius: 10px; 
+  border: 3px solid rgba(0, 0, 0, 0); 
 }
 
 .letter-modal-content::-webkit-scrollbar-thumb:hover {
@@ -295,7 +299,7 @@ small{
 
 /* Firefox用 */
 .letter-modal-content {
-  scrollbar-width: thin; /* スクロールバーの幅 */
+  scrollbar-width: thin; 
   scrollbar-color: #8ebebb rgba(0, 0, 0, 0); /* サムとトラックの色 */
 }
 
