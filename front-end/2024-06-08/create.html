@@ -36,6 +36,7 @@ Yomogi&family=Zen+Kurenaido&family=DotGothic16&display=swap" rel="stylesheet">
 
 <body>
   
+<!-- ヘッダー -->
 <header class="fix_menu">
   <div id="home" class="header-logo">
       <a href="#">
@@ -46,55 +47,39 @@ Yomogi&family=Zen+Kurenaido&family=DotGothic16&display=swap" rel="stylesheet">
   <label for="switch">
       <p><span></span></p>
   </label>
+
+  <!-- メニューボタンを押すと自動的に下書き保存される -->
   <nav id="navwrap">
       <ul class="header_menu">
-          <li><a href="#manu-home">HOME</a></li>
-          <li><a href="#menu-write" class="menu-now">WRITE</a></li>
-          <li><a href="#menu-read">READ</a></li>
-          <li><a href="#menu-logout" id="logout">LOGOUT</a></li>
+          <li><a href="menu-home.html">HOME</a></li>
+          <li><a href="menu-write.html" >WRITE</a></li>
+          <li><a href="menu-read.html">READ</a></li>
+          <li><a href="create.html"  class="menu-now">CREATE NEW</a></li>
+          <!-- <li><a href="#" id="logout">ACCOUNT</a></li> -->
       </ul>
   </nav>
 </header>
 
+
   <div id="container">
   <main id="main-area">
-     <section id="random-theme-section" style="margin: 150px auto 0px ; text-align: center; padding:0px 50px 0px">
+     <section id="random-theme-section">
       <h2>新しい手紙を作成していきましょう！</h2><br><br>
 
-      <div style="display: flex; justify-content: space-around; gap: 0px; width: 600px; justify-content: center; margin: auto; text-align: center;">
+      <div class="idea-box">
         
       <img src="images/post-box.png" style="width: 200px;">
       <button id="random-theme-btn">
-        <span id="random-theme-result">[テーマ] <br> <br>アイデアをもらう</span>
+        <span id="random-theme-result">アイデア</span>
       </button>
      
     </div>
     
     </section>
 
-    <style>
-      #random-theme-btn{
-        border: 1px solid #bbb; 
-        width: 30%; 
-        margin: 20px;
-        font-weight: bolder;
-        transition: all 0.3s;
-        border-radius: 5px;
-        background: #f0f0f0;;
-      }
-
-      #random-theme-btn:hover, .radio-tile:hover {
-background: rgb(176, 201, 202);
-      }
-
-      .radio-tile{
-        background: #f0f0f0;
-        transition: all 0.3s;
-      }
-    </style>
+    
 
     <form id="letterForm">
-        
 
     <section id="area-1" >
         <h2>1. 手紙の各概要を記入欄に記入して下さい。</h2>
@@ -214,7 +199,7 @@ background: rgb(176, 201, 202);
       </div>
     </section>
   </div>
-   
+
   <section id="area-4">
   <h2>４. お好みの封筒と便箋、フォントを1つずつ選択肢から選んで下さい。</h2>
 
@@ -509,11 +494,8 @@ background: rgb(176, 201, 202);
                     <label for="font9" class="font9">
                       <span>Zen Kurenaido :</span>
                         <p>手紙を書こう！<br>Let's write a letter</p>
-
                     </label>
-                   </div>
-
-                   
+                   </div>                  
                 </div>
             </section>
             </li>
@@ -521,24 +503,20 @@ background: rgb(176, 201, 202);
     </section>
 
      <!-- Image file Section -->
-  <section id="area-5" style="background-color: white;">
+  <section id="area-5" >
     <h2>５. 手紙に添付する画像ファイルを選択してください。（任意）</h2>
     <div class="form-container">
-      <div class="form-group" style="text-align: center;">
+      <div class="form-group" >
         <div class="custom-file-upload">
           <input type="file" id="image-upload" name="image-upload" accept="image/*">
           <label for="image-upload" id="upload-label">画像をアップロード</label>
           <span id="file-name"></span>
-          <div id="image-preview"  class="image-preview" style="display: inline-block;">
+          <div id="image-preview"  class="image-preview">
             <img src="path/to/image.jpg" alt="画像の説明" style="display:none">
           </div>
         </div>
-       
       </div>
     </div>
-
-   
-
     <div id="modal">
       <img id="modal-image" src="" alt="拡大表示される画像">
     </div>
@@ -550,7 +528,7 @@ background: rgb(176, 201, 202);
   <h2>６. 手紙の内容を記入してください。<span id="char-count">[ 0/400 ]</span></h2>
 
   <!-- 各便箋の最適文字数を表示する -->
-  <p id="selected-letter-info" style="text-align: center;"></p>
+  <p id="selected-letter-info"></p>
   <div class="form-container">
     <div class="form-group">
       <textarea id="letter-content" name="letter-content" 
@@ -561,40 +539,31 @@ background: rgb(176, 201, 202);
 
   </main>
 
-  <aside id="sub-area"  style="width: 400px; margin: 0px auto 0px ; ">
-    <nav style="padding: 20px 40px 30px;  border: 1px solid #c2c2c2; box-shadow: none;"><br><h3 style="text-align: center; 
-    border-bottom: 1px solid #aaa; padding-bottom: 10px; margin-bottom: 20px; ">手紙の作成手順</h3>
-      <ul id="g-navi">
-        <li><a href="#area-1">１．手紙の概要の記入</a></li>
-        <li><a href="#area-2">２．送信先・送信時間の指定</a></li>
-        <li><a href="#area-3">３．パスワード有無の選定</a></li>
-        <li><a href="#area-4">４．封筒・便箋・フォントの選択</a></li>
-        <li><a href="#area-5">５．添付画像の選択</a></li>
-        <li><a href="#area-6">６．手紙の内容の記入</a></li>
-      </ul>
+  <aside id="sub-area">
+    <nav>
+      <h3>手紙の作成手順</h3>
+        <ul id="g-navi">
+          <li><a href="#area-1">１．手紙の概要の記入</a></li>
+          <li><a href="#area-2">２．送信先・送信時間の指定</a></li>
+          <li><a href="#area-3">３．パスワード有無の選定</a></li>
+          <li><a href="#area-4">４．封筒・便箋・フォントの選択</a></li>
+          <li><a href="#area-5">５．添付画像の選択</a></li>
+          <li><a href="#area-6">６．手紙の内容の記入</a></li>
+        </ul>
       
-      <div style="display: flex; justify-content: space-around;  gap: 20px; margin: 20px 0 10px; border-top: 1px solid #aaa; padding-top: 20px;">
-        
+      <div class="create-btn">
         <button id="reset">全てリセット</button>
-        <button id="save-draft">下書き保存する</button></div>
+        <button id="save-draft">下書き保存する</button>
+      </div>
 
-    
-
-      <p style="margin: 0px 0px 20px; font-size: 13px;">記入漏れはありませんか？全ての項目を終えたら<br>プレビューに
-      お進みください。</p>
+      <p>記入漏れはありませんか？全ての項目を終えたら<br>
+        プレビューにお進みください。</p>
 
       <button id="save-preview">プレビューに進む</button>
-
-     
     </nav>
   </aside>
 </div>
 
-<style>
-  #sub-area button{
-    font-weight: bolder;
-  }
-</style>
 <div>
     <footer id="footer">
     <p id="page-top"><a href="#">TOP</a></p> 
