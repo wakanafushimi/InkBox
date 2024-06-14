@@ -1,4 +1,10 @@
-html, body {
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;600;700;800;900&display=swap");
+
+ body{
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+ }
+ 
+ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -50,7 +56,7 @@ html, body {
 
   #target {
     position: absolute;
-    width: 30px;
+    width: 40px;
     height: 30px;
     background-image: url('images/letter.png'); 
     background-size: contain;
@@ -58,6 +64,12 @@ html, body {
     cursor: pointer;
     left:190px;
     margin: 20px;
+    z-index: 500;
+    transition: all .2s;
+  }
+
+  #target:hover{
+    scale: 1.1;
   }
 
   #score, #result {
@@ -87,10 +99,11 @@ html, body {
   .modal-content, 
   .modal-content button{
     font-size: smaller;
-    width: 100%;
+    width: 80%;
     margin: auto;
-    padding: -100px;
+    padding: -130px;
   }
+
 
   .about-us h2,  .about-us p{
     font-size: smaller;
@@ -126,7 +139,8 @@ html, body {
     top: 50%;
     color: white;
     left: 50%;
-    width:80%;
+    width:70%;
+    max-width: 500px;
     height:fit-content;
     transform: translate(-50%, -50%);
     background-color: rgba(15, 15, 15, 0.51);
@@ -135,13 +149,24 @@ html, body {
     text-align: center;
   }
 
-  .close {
+  .modal-content img{
+    width:100px; 
+    height: fit-content;
+    margin: 18px auto 25px;
+  }
+
+  .close{
+    width: 60%;
+    font-size: 18px;
+    font-weight: bolder;
+  }
+
+  .close, #howToPlayButton {
       border: 1px solid rgb(255, 255, 255);
       cursor: pointer;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 5px;
       margin-bottom: 30px;
-      right: 30px;
   }
 
   #howToPlayModal {
@@ -384,6 +409,32 @@ h1{
       font-size: smaller;
     }
 
+    .first-page {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .first-page img {
+      width: 90%;
+      margin: 50px auto -50px;
+  }
+
+  .login-page {
+      width: 100%;
+      margin: auto;
+  }
+
+  .login-page {
+    width: 100%;
+    margin: auto;
+    margin-top:80px;
+}
+
+.about-us p, #message a{
+  font-size: 12px;
+}
+
+
 }
 
 /*========= ログインフォーム レスポンシブ対応 ===============*/
@@ -401,30 +452,6 @@ h1{
     width: 550px;
     height: fit-content; /* Adjusted to fit the content */
 }
-
-@media (max-width: 767px) {
-    .first-page {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .first-page img {
-        width: 90%; /* Adjust width for smaller screens */
-        margin: 50px auto -50px;
-    }
-
-    .login-page {
-        width: 100%;
-        margin: auto;
-    }
-
-    .login-page {
-      width: 100%;
-      margin: auto;
-      margin-top:80px;
-  }
-}
-
 
 /* Initial hidden state */
 .animate {
@@ -678,3 +705,47 @@ color: gray;
 
 
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+#logo-top {
+  position: absolute;
+  z-index: 50;
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* Start hidden and fade in */
+}
+
+#show-later, #target, #howToPlayButton {
+    display: none; /* Initially hidden */
+    position: absolute;
+}
+
+#boundary {
+    /* border: 1px dotted rgb(140, 169, 173); */
+    position: absolute;
+    z-index: 50;
+    width: 90%;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; 
+}
