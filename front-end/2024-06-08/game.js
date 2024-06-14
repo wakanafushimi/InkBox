@@ -2,7 +2,7 @@
 ///index.html全体のアニメーション: 下に自動でスクロール
 
  document.addEventListener("DOMContentLoaded", function() {
-  const animationDuration = 2000; 
+  const animationDuration = 2800; 
 
   setTimeout(() => {
     window.scrollTo({
@@ -43,22 +43,56 @@ $(document).ready(function() {
   });
 });
 
-
 $(document).ready(function() {
-  // ページの読み込みが完了したら、一番下にゆっくりとスクロール
   $(window).on('load', function() {
-      $('html, body').animate({ scrollTop: $(document).height() }, 4000); //スクロール
+      $('html, body').animate({ scrollTop: $(document).height() }, 3000); 
   });
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 //ゲーム
 
+document.addEventListener('DOMContentLoaded', (event) => {
+  VANTA.BIRDS({
+      el: "#bird",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      backgroundColor: 0x110f20,
+      color1: 0x568dac,
+      color2: 0x9473b3,
+      birdSize: 1,
+      separation: 70.00
+  });
+
+  const logoTop = document.getElementById('logo-top');
+  logoTop.classList.add('fade-in');
+  
+  setTimeout(() => {
+      logoTop.classList.remove('fade-in');
+      logoTop.classList.add('fade-out');
+      logoTop.addEventListener('animationend', () => {
+          logoTop.style.display = 'none';
+      });
+
+      const showLater = document.getElementById('show-later');
+      showLater.style.display = 'block'; 
+      showLater.classList.add('fade-in');
+      const howToPlayButton = document.getElementById('howToPlayButton');
+      howToPlayButton.style.display = 'block';
+      howToPlayButton.classList.add('fade-in');
+  }, 1500); 
+});
+
+// ゲーム変数
 let target; // 手紙
 let scoreDisplay;
 let score;
 let timeLeft;
 let timer;
+let firstClick = true; 
 
 const modal = document.getElementById('howToPlayModal');
 const howToPlayButton = document.getElementById('howToPlayButton');
@@ -70,35 +104,19 @@ howToPlayButton.onclick = function() {
 
 closeButton.onclick = function() {
   modal.style.display = 'none';
-  setupGame(); // closeButtonをクリックした後にゲームを開始する
-  // スコア、結果、ターゲットを表示
+  setupGame(); 
   document.getElementById('score').style.display = 'block';
   document.getElementById('result').style.display = 'block';
-  document.getElementById('target').style.display = 'block';
+  document.getElementById('boundary').style.display = 'block'; 
 }
 
 window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = 'none';
+      modal.style.display = 'none';
   }
 }
 
-//vanta.js 鳥の設定
 function setupGame() {
-  VANTA.BIRDS({
-    el: "#bird",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    scale: 1.00,
-    scaleMobile: 1.00,
-    backgroundColor: 0x110f20,
-    color1: 0x568dac,
-    color2: 0x9473b3,
-    birdSize: 1,
-    separation: 70.00
-  });
-
   target = document.getElementById('target');
   scoreDisplay = document.getElementById('score');
   score = 0;
@@ -120,27 +138,55 @@ function updateTime() {
       endGame();
       return;
   }
-  
-  // Pad the seconds value with leading zero if less than 10
+
   let formattedTimeLeft = timeLeft.toString().padStart(2, '0');
-  
   scoreDisplay.textContent = '00 : ' + formattedTimeLeft;
 }
 
 function endGame() {
-scoreDisplay.textContent = '時間切れ！拾得 ' + score + '件';
-target.style.display = 'none';
+  scoreDisplay.textContent = '時間切れ！拾得 ' + score + '件';
+  target.style.display = 'none';
 }
 
 document.getElementById('target').addEventListener('click', function() {
   score++;
-  target.style.top = Math.floor(Math.random() * (window.innerHeight - target.offsetHeight)) + 'px';
-  target.style.left = Math.floor(Math.random() * (window.innerWidth - target.offsetWidth)) + 'px';
+  if (firstClick) {
+      firstClick = false; 
+      positionTarget();
+  } else {
+      positionTarget(); 
+  }
   updateScore();
 });
 
-// 初回のゲームセットアップ
-setupGame();
+function positionTarget() {
+const boundary = document.getElementById('boundary');
+const target = document.getElementById('target');
+const scoreElement = document.getElementById('score');
+const resultElement = document.getElementById('result');
+const boundaryRect = boundary.getBoundingClientRect();
+const targetWidth = target.offsetWidth;
+const targetHeight = target.offsetHeight;
+
+const minX = boundaryRect.left;
+const maxX = boundaryRect.right - targetWidth;
+const minY = boundaryRect.top;
+const maxY = boundaryRect.bottom - targetHeight;
+
+let targetX, targetY;
+do {
+    targetX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+    targetY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+  } while (
+    (targetX < scoreElement.getBoundingClientRect().right && targetX + targetWidth > scoreElement.getBoundingClientRect().left &&
+    targetY < scoreElement.getBoundingClientRect().bottom && targetY + targetHeight > scoreElement.getBoundingClientRect().top) ||
+    (targetX < resultElement.getBoundingClientRect().right && targetX + targetWidth > resultElement.getBoundingClientRect().left &&
+    targetY < resultElement.getBoundingClientRect().bottom && targetY + targetHeight > resultElement.getBoundingClientRect().top)
+);
+
+target.style.left = targetX + 'px';
+target.style.top = targetY + 'px';
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
