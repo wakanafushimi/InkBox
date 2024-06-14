@@ -191,29 +191,33 @@ document.getElementById('save-preview').addEventListener('click', function(event
     });
   });
 
-  // ランダムテーマ提案機能
-  const themes = [
-    '感謝の気持ち',
-    '未来の自分へ',
-    '家族への愛',
-    '友人との思い出',
-    'もし魔法が使えるなら',
-    'BIG LOVE♡',
-    '人生の目標',
-    '感動した出来事',
-    '誰にも言えない秘密',
-    '旅行の思い出',
-    '貴方の黒歴史',
-    '夢や希望',
-    '美味しかったご飯',
-    '後悔の気持ち',
-    'ありがとうの言葉',
-    '困難を乗り越えた経験'
-  ];
+  // テーマと背景色のペア
+const themeColors = [
+  { theme: '感謝の気持ち', color: '#FFDDC1' },
+  { theme: '未来の自分へ', color: '#FFD1DC' },
+  { theme: '家族への愛', color: '#FF9AA2' },
+  { theme: '友人との大切な思い出', color: '#FFB7B2' },
+  { theme: 'もし魔法が使えるなら', color: '#FFDAC1' },
+  { theme: 'BIG LOVE♡', color: '#E2F0CB' },
+  { theme: '人生の目標', color: '#B5EAD7' },
+  { theme: '感動した話', color: '#C7CEEA' },
+  { theme: '言えない秘密', color: '#B5B9FF' },
+  { theme: '旅行の思い出', color: '#bae1e6' },
+  { theme: '黒歴史★', color: '#b7b7dd' },
+  { theme: '夢や希望', color: '#A2E2FF' },
+  { theme: '美味しかったご飯', color: '#e8c4e6' },
+  { theme: '後悔の気持ち', color: '#bed9bb' },
+  { theme: '挫折した経験', color: '#daecc8' },
+  { theme: '乗り越えた困難', color: '#FFD1A2' }
+];
 
-  $('#random-theme-btn').on('click', function() {
-    const randomIndex = Math.floor(Math.random() * themes.length);
-    const randomTheme = themes[randomIndex];
-    $('#random-theme-result').text(`${randomTheme}`);
-  });
+$('#random-theme-btn').on('click', function() {
+  const randomIndex = Math.floor(Math.random() * themeColors.length);
+  const randomTheme = themeColors[randomIndex].theme;
+  const randomColor = themeColors[randomIndex].color;
+  $('#random-theme-result').text(`${randomTheme}`);
+  $('#random-theme-btn').css('background-color', randomColor);
+});
+
+
 });
