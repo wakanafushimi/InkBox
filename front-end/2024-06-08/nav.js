@@ -115,11 +115,11 @@ $(document).ready(function(){
           
           // アコーディオンが完全に開いた後にスクロールして、そのアコーディオンのトップを画面に表示
           setTimeout(function() {
-              var offset = $this.offset().top - 100; // アコーディオンのトップを画面上部から100px上に配置する
+              var offset = $this.offset().top - 100; 
               $('html, body').animate({
                   scrollTop: offset
               }, 500);
-          }, 500); // スクロールを開始する前に500ミリ秒待機
+          }, 500);
       } else {
           // 開く動作
           $box.slideUp(500, function() {
@@ -129,9 +129,9 @@ $(document).ready(function(){
   });
 
   // ページが読み込まれた際に全てのアコーディオンを閉じる
-  $('.accordion-area section').removeClass("open"); // openクラスを削除
-  $(".box").hide(); // ボックスを非表示にする
-  $('.title').removeClass('close'); // 閉じるクラスを削除
+  $('.accordion-area section').removeClass("open"); 
+  $(".box").hide(); 
+  $('.title').removeClass('close'); 
 
   // フォントのセクションに適用
   $('.accordion-area section .title-wrapper').on('click', function() {
@@ -139,7 +139,6 @@ $(document).ready(function(){
       var $box = $this.next('.box');
       
       if (!$this.hasClass('close')) {
-          // 閉じる動作
           $('.box').slideUp(500);
           $('.title-wrapper').removeClass('close');
           $('.title-wrapper .title').removeClass('close');
@@ -150,11 +149,11 @@ $(document).ready(function(){
           
           // アコーディオンが完全に開いた後にスクロールして、そのアコーディオンのトップを画面に表示
           setTimeout(function() {
-              var offset = $this.offset().top - 100; // アコーディオンのトップを画面上部から100px上に配置する
+              var offset = $this.offset().top - 100; 
               $('html, body').animate({
                   scrollTop: offset
               }, 500);
-          }, 500); // スクロールを開始する前に500ミリ秒待機
+          }, 500); 
       } else {
           // 開く動作
           $box.slideUp(500, function() {
@@ -166,8 +165,8 @@ $(document).ready(function(){
 
   // ラジオボタンが変更されたときの処理
   $('input[type="radio"]').on('change', function() {
-      var selectedText = $(this).parent().text(); // ラジオボタンの親要素（label）のテキストを取得
-      $(this).closest('section').find('.selected-text').text(selectedText); // 同じセクション内の .selected-text 要素にテキストを表示
+      var selectedText = $(this).parent().text(); 
+      $(this).closest('section').find('.selected-text').text(selectedText); 
   });
 }); 
 
@@ -191,11 +190,11 @@ $(document).ready(function(){
         reader.onload = function(e) {
           const img = document.createElement('img');
           img.src = e.target.result;
-          imageShow.innerHTML = ''; // Clear any existing images
+          imageShow.innerHTML = ''; 
           imageShow.appendChild(img);
           uploadLabel.textContent = '画像を削除';
-          fileNameDisplay.textContent = file.name; // Display the file name
-          uploadLabel.id = 'delete-label'; // Change label id to 'delete-label'
+          fileNameDisplay.textContent = file.name; 
+          uploadLabel.id = 'delete-label';
         };
         reader.readAsDataURL(file);
       }
@@ -203,11 +202,11 @@ $(document).ready(function(){
   
     uploadLabel.addEventListener('click', function() {
       if (this.id === 'delete-label') {
-        imageUpload.value = ''; // Clear the input value
-        imageShow.innerHTML = ''; // Clear the preview
-        fileNameDisplay.textContent = ''; // Clear the file name display
-        this.textContent = '画像をアップロード'; // Reset the label text
-        this.id = 'upload-label'; // Change label id back to 'upload-label'
+        imageUpload.value = ''; 
+        imageShow.innerHTML = ''; 
+        fileNameDisplay.textContent = ''; 
+        this.textContent = '画像をアップロード';
+        this.id = 'upload-label'; 
       }
     });
   
@@ -232,24 +231,24 @@ $(document).ready(function(){
   function PageTopAnime() {
 
     var scroll = $(window).scrollTop(); //スクロール値を取得
-    if (scroll >= 200){//200pxスクロールしたら
-      $('#page-top').removeClass('DownMove');   // DownMoveというクラス名を除去して
-      $('#page-top').addClass('UpMove');      // UpMoveというクラス名を追加して出現
-    }else{//それ以外は
-      if($('#page-top').hasClass('UpMove')){//UpMoveというクラス名が既に付与されていたら
-        $('#page-top').removeClass('UpMove'); //  UpMoveというクラス名を除去し
-        $('#page-top').addClass('DownMove');  // DownMoveというクラス名を追加して非表示
+    if (scroll >= 200){
+      $('#page-top').removeClass('DownMove');  
+      $('#page-top').addClass('UpMove');      
+    }else{
+      if($('#page-top').hasClass('UpMove')){
+        $('#page-top').removeClass('UpMove'); 
+        $('#page-top').addClass('DownMove'); 
       }
     }
     
-    var wH = window.innerHeight; //画面の高さを取得
-    var footerPos =  $('#footer').offset().top; //footerの位置を取得
+    var wH = window.innerHeight; 
+    var footerPos =  $('#footer').offset().top; 
     if(scroll+wH >= (footerPos+10)) {
-      var pos = (scroll+wH) - footerPos+10 //スクロールの値＋画面の高さからfooterの位置＋10pxを引いた場所を取得し
-      $('#page-top').css('bottom',pos); //#page-topに上記の値をCSSのbottomに直接指定してフッター手前で止まるようにする
-    }else{//それ以外は
-      if($('#page-top').hasClass('UpMove')){//UpMoveというクラス名がついていたら
-        $('#page-top').css('bottom','10px');// 下から10pxの位置にページリンクを指定
+      var pos = (scroll+wH) - footerPos+10 
+      $('#page-top').css('bottom',pos); 
+    }else{
+      if($('#page-top').hasClass('UpMove')){
+        $('#page-top').css('bottom','10px');
       }
     }
     }
@@ -270,5 +269,59 @@ $(document).ready(function(){
     return false;//リンク自体の無効化
     });
 
+    document.addEventListener("DOMContentLoaded", function() {
+      var modal = document.getElementById("logoutModal");
+      var homeMenu = document.querySelector(".home-menu");
+      var logoutBtn = document.getElementById("logout");
+      var cancelBtn = document.getElementById("cancelBtn");
+      var confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
+      var confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+      var switchSections = document.getElementsByClassName("switch-section");
+  
+      logoutBtn.onclick = function() {
+          modal.style.display = "block";
+          homeMenu.classList.add("fade-out");
+      }
 
-
+      cancelBtn.onclick = function() {
+        modal.style.display = 'none';
+        homeMenu.classList.remove("fade-out");
+      }
+  
+      confirmLogoutBtn.onclick = function() {
+        // 実際のログアウト処理をここに追加
+        alert("ログアウトしました");
+        modal.style.display = "none";
+        homeMenu.classList.remove("fade-out");
+        window.location.href = 'index.html'; 
+    }
+    
+    confirmDeleteBtn.onclick = function() {
+        // 実際のアカウント削除処理をここに追加
+        alert("アカウントが削除されました");
+        modal.style.display = "none";
+        homeMenu.classList.remove("fade-out");
+        window.location.href = 'index.html';
+    }
+    
+  
+      for (var i = 0; i < switchSections.length; i++) {
+          switchSections[i].onclick = function() {
+              var targetId = this.getAttribute("data-target");
+              var currentSection = this.parentElement;
+              var targetSection = document.getElementById(targetId);
+  
+              currentSection.classList.add("hidden");
+              targetSection.classList.remove("hidden");
+              targetSection.classList.add("slide-in");
+          }
+      }
+  
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+              homeMenu.classList.remove("fade-out");
+          }
+      }
+  });
+  
