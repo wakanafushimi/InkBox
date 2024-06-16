@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>未来郵便局</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+  <!--============== 鳥の生成 ===============-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+   <!--ゲーム、index.html全体のレイアウト-->
+  <link rel="stylesheet" type="text/css" href="game.css">
+  
+  <script src="game.js" defer></script>
+  <script src="nav.js" defer></script>
+  <script src="create.js" defer></script>
+</head>
+
+<body class="game-container" id="index">
+
+  <img src="images/logo-top.png" id="logo-top">
+
+  <!-- 上ゲーム部分 -->
+  <header id="header">
+      <div id="bird"></div>
+      <div id="target"></div>
+      <div id="score"></div>
+      <div id="result"></div>
+
+      <div id="show-later">
+          <div class="game-logo" style="position: absolute;">
+              <img src="images/logo3.png">
+          </div>
+      </div> 
+
+         <!-- ゲーム開始モーダル -->
+          <button id="howToPlayButton">ひまつぶし</button>
+          <div id="howToPlayModal" class="modal">
+              <div class="modal-content">
+                  <h3>手紙をさがせ</h3>
+                  <img src="images/letter.png">
+                  <p style="line-height: 1.8;">あっ、大切な手紙が鳥と共に吹き飛んでしまった… 
+                    <br>時間内に出来るだけたくさん取り戻そう！</p>
+                    <p>ヒント：意外なところにあるカモ☆</p><br><br>
+                  <button class="close">はじめる</button>
+              </div>
+          </div>
+
+          <!-- スクロールアイコン -->
+  <div class="scrolldown2">
+    <span>SCROLL</span>
+</div>
+
+   <!-- Boundary Container -->
+   <div id="boundary">
+    <div id="target"></div>
+</div>
+  </header>
+
+  <!--下スクロール部分-->
+  <div id="index-container" >
+   
+<div class="tab" id="game-tab">
+    <ul class="tab__menu">
+        <!-- ログイン・新規登録フォーム画面 -->
+      <li class="tab__menu-item is-active" id="tab-01" data-tab="01">LOGIN/SIGN IN</li>
+        <!-- システム説明画面 -->
+      <li class="tab__menu-item" id="tab-02" data-tab="02">ABOUT US</li>
+     </ul>
+
+    <div class="tab__panel">
+      <div class="tab__panel-box tab__panel-box001 is-show" data-panel="01">
+        <div class="first-page">
+          <img class="animate" src="images/logo5.png" alt="Logo">
+          <div class="login-page">
+
+            <div class="form">
+               <!-- 新規登録フォーム -->
+              <form class="register-form animate">
+                <input type="text" placeholder="name" />
+                
+                <div class="input-with-icon">
+                  <input type="password" placeholder="password" id="registerPasswordInput" />
+                  <ion-icon name="eye-off" id="toggleRegisterPassword"></ion-icon>
+                </div>
+                <input type="text" placeholder="email address" />
+                <button>create</button><br><br>
+                <h4 class="message"><a href="#">アカウントをお持ちですか？ ログインはこちら</a></h4>
+              </form>
+              
+              <!-- ログインフォーム -->
+              <form class="login-form animate">
+                <input type="text" placeholder="username" />
+                <div class="input-with-icon">
+                  <input type="password" placeholder="password" id="loginPasswordInput" />
+                  <ion-icon name="eye-off" id="toggleLoginPassword"></ion-icon>
+                </div>
+                <button>login</button><br><br>
+                <h4 class="message"><a href="#">はじめての方ですか？ 新規登録はこちら</a></h4>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="tab__panel-box tab__panel-box002" data-panel="02">
+          <div class="first-page" >
+            <img class="animate" src="images/logo1.png" alt="Logo" style="align-self: flex-end;">
+
+              <!-- システムに関する説明文 -->
+            <div class="login-page about-us">
+              <p><span>未来郵便局は<br>大切な誰かの未来に手紙を送ります</span><br><br>
+                便箋を選んだり、字体を変えてみたり、写真を入れたり...<br>
+                手書きの手紙のように心のこもったメッセージを伝えられます。<br>
+                送信日時を指定して、特定の未来に手紙を送ることもできます。<br>
+                封筒を開けるどきどき。相手に手紙が届くまでのわくわく。<br>
+                SNSだけでは伝わらない、新しい文通してみませんか？<br>
+                </p>
+            </div>
+          </div>  
+        </div>
+
+      </div>
+      </div>
+  </div>
+</body>
+</html>

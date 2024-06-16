@@ -1,0 +1,601 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;600;700;800;900&display=swap");
+
+ body{
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  animation: fadeIn 1.5s ease-out forwards; 
+ }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-image: linear-gradient(90deg, rgb(162, 233, 228), rgba(150, 167, 241, 1));
+}
+
+.game-container {
+  height: 100%;
+  position: relative;
+  margin-top: 0;
+}
+
+.about-us{
+  margin-top: unset;
+}
+
+.about-us p{
+  font-size: 15px; 
+  line-height: 3;
+  color: #d7e6e3;
+}
+
+.about-us span{
+  font-weight: bolder; 
+  font-size: larger; 
+  line-height: .2;
+  color: white;
+}
+
+#bird {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+button {
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 8px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+#target {
+  position: absolute;
+  width: 40px;
+  height: 30px;
+  background-image: url('images/letter.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  left:190px;
+  margin: 20px;
+  z-index: 500;
+  transition: all .2s;
+}
+
+#target:hover{
+  scale: 1.1;
+}
+
+#score, #result {
+  position: absolute;
+  top: 30px;
+  right: 150px;
+  color: white;
+}
+
+#howToPlayButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  color: white;
+  left: 50%;
+  width:70%;
+  max-width: 500px;
+  height:fit-content;
+  transform: translate(-50%, -50%);
+  background-color: rgba(15, 15, 15, 0.51);
+  padding: 35px;
+  border: 1px solid white;
+  text-align: center;
+}
+
+.modal-content img{
+  width:100px; 
+  height: fit-content;
+  margin: 18px auto 25px;
+}
+
+.close{
+  width: 60%;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.close, #howToPlayButton {
+    border: 1px solid rgb(255, 255, 255);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+#howToPlayModal {
+display: none; /* 最初は非表示 */
+}
+
+.game-logo img{
+width: 200px;
+height: auto;
+margin: 10px;
+}
+
+/*========= ログインフォーム ===============*/
+
+.login-page {
+width: 450px;
+padding: 8% 0 0;
+margin: auto;
+margin-bottom: 50px;
+margin-left: -60px;
+
+}
+
+.form {
+position: relative;
+z-index: 1;
+max-width: 450px;
+margin: 0 auto 0;
+padding: 20px;
+text-align: center;
+align-self: flex-end;
+}
+
+.form input {
+font-family: "Roboto", sans-serif;
+outline: 0;
+background: #f2f1f148;
+width: 100%;
+border: 0;
+margin: 0 0 15px;
+padding: 15px;
+box-sizing: border-box;
+font-size: 14px;
+}
+.form button {
+font-family: "Roboto", sans-serif;
+text-transform: uppercase;
+outline: 0;
+background: #345963;
+width: 100%;
+border: 0;
+padding: 15px;
+color: #FFFFFF;
+font-size: 14px;
+-webkit-transition: all 0.3 ease;
+transition: all 0.3 ease;
+cursor: pointer;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+background: #3b7173;
+}
+.form .message {
+margin: 15px 0 0;
+color: #b3b3b3;
+font-size: 12px;
+}
+.form .message a {
+color: #345963;
+text-decoration: none;
+}
+
+.message a:hover{
+       color: #3b7173;   
+}
+
+.form .register-form {
+display: none;
+}
+.login-container {
+position: relative;
+z-index: 1;
+max-width: 300px;
+margin: 0 auto;
+}
+.login-container:before, .container:after {
+content: "";
+display: block;
+clear: both;
+}
+.login-container .info {
+margin: 50px auto;
+text-align: center;
+}
+.login-container .info h1 {
+margin: 0 0 15px;
+padding: 0;
+font-size: 36px;
+font-weight: 300;
+color: #1a1a1a;
+}
+.login-container .info span {
+color: #4d4d4d;
+font-size: 12px;
+}
+.login-container .info span a {
+color: #000000;
+text-decoration: none;
+}
+.login-container .info span .fa {
+color: #EF3B3A;
+}
+
+
+/*========= スクロールダウンのためのCSS ===============*/
+
+/*スクロールダウン全体の場所*/
+.scrolldown2{
+  /*描画位置※位置は適宜調整してください*/
+position:absolute;
+bottom:10px;
+left:50%;
+}
+
+/*Scrollテキストの描写*/
+.scrolldown2 span{
+  /*描画位置*/
+position: absolute;
+left:10px;
+bottom:10px;
+  /*テキストの形状*/
+color: #eee;
+font-size: 0.7rem;
+letter-spacing: 0.05em;
+/*縦書き設定*/
+-ms-writing-mode: tb-rl;
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+}
+
+/* 丸の描写 */
+.scrolldown2:before {
+  content: "";
+  /*描画位置*/
+  position: absolute;
+  bottom:0;
+  left:-4px;
+  /*丸の形状*/
+width:10px;
+height:10px;
+border-radius: 50%;
+background:#eee;
+  /*丸の動き1.6秒かけて透過し、永遠にループ*/
+animation:
+  circlemove 1.6s ease-in-out infinite,
+  cirlemovehide 1.6s ease-out infinite;
+}
+
+/*下からの距離が変化して丸の全体が上から下に動く*/
+@keyframes circlemove{
+    0%{bottom:55px;}
+   100%{bottom:-5px;}
+}
+
+/*上から下にかけて丸が透過→不透明→透過する*/
+@keyframes cirlemovehide{
+    0%{opacity:0}
+   50%{opacity:1;}
+  80%{opacity:0.9;}
+100%{opacity:0;}
+}
+
+/* 線の描写 */
+.scrolldown2:after{
+content:"";
+  /*描画位置*/
+position: absolute;
+bottom:0;
+left:0;
+  /*線の形状*/
+width:2px;
+height: 60px;
+background:#eee;
+}
+
+h1{
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translateY(-50%) translateX(-50%);
+color:#eee;
+text-align: center;
+}
+
+#header{
+width:100%;
+height: 100vh;
+position: relative;
+} 
+
+#header:before{
+content: '';
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+width:100%;
+height: 100vh;
+background: none; 
+}
+
+#container {
+position: relative;
+z-index: 1;
+background: #a8bfbb;
+height: fit-content;
+width: 100%;
+padding: 0;
+text-align: center;
+}
+
+.first-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 80%;
+}
+
+.first-page img {
+  margin: 80px auto 60px auto;
+  width: 550px;
+  height: fit-content;
+}
+
+@media (max-width: 768px) {
+  .first-page {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .first-page img {
+      width: 90%; 
+      margin: 50px auto -50px;
+  }
+
+  .login-page {
+      width: 100%;
+      margin: auto;
+  }
+
+  .login-page {
+    width: 100%;
+    margin: auto;
+    margin-top:80px;
+}
+  #header,
+  #header:before{
+height: 90vh;    
+  }
+
+  #container{
+    height: 80px;
+    padding-bottom: 20px;
+  }
+
+  .tab__menu-item{
+    font-size: smaller;
+  }
+
+  #score, #result {
+    top: 60px;
+    right:23px;
+    font-size: 13px;
+  }
+
+  #howToPlayButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 7px;
+  padding: 8px;
+  font-size: 10px;
+}
+
+.modal-content p, 
+.modal-content, 
+.modal-content button{
+  font-size: smaller;
+  width: 100%;
+  margin: auto;
+  padding: -100px;
+}
+
+.about-us h2,  .about-us p{
+  font-size: smaller;
+  
+}
+
+.about-us p{
+  margin-bottom: 50px;
+}
+
+}
+
+.animate {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 1s ease-out, transform 1s ease-out;
+align-self: flex-start;
+}
+
+.message a{
+font-size: larger;
+color: white;
+}
+
+.animate.show {
+opacity: 1;
+transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+
+.about-us{
+margin-top:20px;
+color: white; 
+text-align: right; 
+
+}
+
+.tab {
+max-width: 100%;
+margin: 0 auto;
+padding:0;
+
+}
+
+
+/* タブメニュー */
+.tab__menu {
+  display: flex;
+  align-items:center; 
+  justify-content: center;
+  min-height: 50px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.tab__menu-item {
+list-style: none;
+width: 100%;
+padding: 20px; 
+text-align: center;
+background-color: #3d4162;
+cursor: pointer;
+color: white;
+margin: 0;
+transition: all .3s; 
+font-weight: bolder;
+
+}
+
+.tab__menu-item:last-of-type {
+margin-right: 0px;
+}
+
+.tab__panel {
+width: 100%;
+height: 500px;
+}
+
+.tab__panel-box {
+min-height: 400px;
+padding: 10px 30px;
+border-top: none;
+}
+
+.tab__panel-box001 {
+  background:linear-gradient(#b2d2cf,#acbdd0 );
+display: none;
+}
+
+.tab__panel-box002 {
+background-color: 	#3E4460;
+display: none;
+}
+
+/* is-showがついている時のスタイル */
+.tab__panel-box.is-show {
+  display: block;
+}
+
+#tab-02{
+  background-color: 	#3E4460;
+  color:  #b2d2cf;
+}
+
+#tab-01{
+  color:  #3E4460;
+  background: #b2d2cf;
+}
+
+.about-us h2{
+  padding: 30px;
+  margin:30px;
+  }
+  
+
+.input-with-icon {
+position: relative;
+}
+
+.input-with-icon ion-icon {
+position: absolute;
+right: 20px; 
+top: 40%;
+transform: translateY(-50%);
+cursor: pointer;
+font-size: 25px;
+color: gray;
+}
+
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+#logo-top {
+  position: absolute;
+  z-index: 50;
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; 
+}
+
+#show-later, #target, #howToPlayButton {
+    display: none; 
+    position: absolute;
+}
+
+#boundary {
+    position: absolute;
+    z-index: 50;
+    width: 90%;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; 
+}

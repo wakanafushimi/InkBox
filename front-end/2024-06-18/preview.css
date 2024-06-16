@@ -1,0 +1,514 @@
+h2 {
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  margin-top: -30px;
+  margin-bottom: -10px;
+}
+
+img{
+  width: 40%;
+}
+
+#read-letter,
+.modal-content button,
+.modal-buttons button {
+  width: fit-content;
+  background-color: rgba(37, 35, 35, 0.589);
+  font-size: 15px;
+  color: white;
+  font-weight: bolder;
+  border: 1px solid white;
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 20px;
+}
+
+#read-letter {
+  width: 100%;
+}
+
+.modal-content button {
+  margin: 10px;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+
+#preview-title{
+  width:75%;
+}
+
+#read-letter{
+  width:70%;
+  margin-bottom: 20px;
+}
+
+main{
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 0px 30px 10px;
+}
+
+#envelope {
+  width: 40%;
+  cursor: pointer;
+}
+
+#details {
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+#details h2 {
+  line-height: 0.5;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  color: white;
+  left: 50%;
+  width: 50%;
+  height: fit-content;
+  transform: translate(-50%, -50%);
+  background: hsla(0, 0%, 0%, 0.247);
+  padding: 35px;
+  border: 1px solid white;
+  text-align: center;
+}
+
+.new-letter-box {
+  opacity: 0; 
+  animation: fadeIn 3s ease forwards; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; 
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#password-input{
+  border: 1px solid gray;
+  background: hsla(0, 0%, 100%, 0.613);
+  font-size: larger;
+  padding: 20px; width: 70%; margin: auto;
+}
+
+.modal-content h1 {
+  font-size: 24px;
+  color: #fff;
+}
+
+.new-letter-box {
+  border: 2px solid white;
+  padding: 20px 50px 20px;
+  width: fit-content;
+  background: hsla(0, 0%, 0%, 0.685);
+  box-shadow: 0 0 30px rgba(252, 251, 251, 0.5); 
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.new-letter-box img{
+  max-width: 280px;
+  padding: 30px;
+  margin: 10px;
+}
+
+.letter-modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+#preview-envelope{
+  width: 50%;
+}
+.modal-buttons{
+  display: flex; 
+  justify-content: space-around; 
+  padding-top: 50px;
+}
+
+#preview-title, #preview-title2{
+  font-size: 20px; 
+  text-align:center; 
+  border-bottom: 1px solid white; 
+  padding-bottom: 10px;
+}
+
+.modal-sender{
+  text-align: right;
+  border-bottom: 1px solid white; 
+  padding-bottom: 50px;
+}
+
+.letter-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: hsla(0, 0%, 0%, 0.685);
+  box-shadow: 0 0 30px rgba(252, 251, 251, 0.5); 
+  padding: 50px 150px 80px;
+  color: rgb(246, 246, 249);
+  font-weight: bolder;
+  border: 1px solid white;
+  width: 90%;
+  width: 100%;
+  max-width: 65%;
+  max-height: 120vh; 
+  overflow-y: auto; 
+}
+
+.modal-receiver-date{
+  display: flex; justify-content: space-between;
+}
+
+.letter-modal{
+  background-color: rgba(0, 0, 0, 0.671);
+}
+
+.letter-modal-content img {
+  width: 100%;
+  height: auto; 
+  max-width: 100%;
+  margin: 30px auto 30px;
+  box-shadow: 0 0 10px rgba(252, 251, 251, 0.5); 
+}
+
+.new-letter-box h2{
+  color: white;
+}
+@media screen and (max-width:768px) {
+  .new-letter-box {
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto; 
+    line-height: .4;
+  }
+
+  .new-letter-box h2 {
+    margin-bottom: -50px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+  }
+
+  #details {
+    width: 80%;
+    text-align: center;
+    margin-top: -80px;
+  }
+}
+
+.open-letter li a{
+  padding: 10px;
+  border: 1px solid gray;
+}
+
+.open-letter li{
+  color: rgb(132, 50, 50);
+  font-weight: bolder;
+}
+
+#letter-container {
+  position: relative;
+}
+
+footer h4{
+  color: rgb(132, 50, 50);
+  font-weight: bolder;
+  padding: 5px 10px 5px;
+}
+
+#preview-letter {
+  display: block; 
+  width: 100%; 
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa; 
+  padding:0; 
+  text-align: center; 
+  z-index: 200; 
+  }
+
+small{
+  padding-top: 30px;
+}
+
+#preview-image {
+  display: none; 
+}
+
+ /* スクロール可能なモーダルのスタイル */
+ .letter-modal-content {
+  max-height: 80vh; 
+  overflow-y: auto; 
+ }
+
+/* Webkitベースのブラウザ用（Chrome、Safari） */
+.letter-modal-content::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.letter-modal-content::-webkit-scrollbar-track {
+  background: black; 
+}
+
+.letter-modal-content::-webkit-scrollbar-thumb {
+  background-color: #888; /* スクロールバーのサム（ハンドル） */
+  border-radius: 10px; 
+  border: 3px solid rgba(0, 0, 0, 0); 
+}
+
+.letter-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #8ebebb; /* ホバー時のサムの色 */
+}
+
+/* Firefox用 */
+.letter-modal-content {
+  scrollbar-width: thin; 
+  scrollbar-color: #8ebebb rgba(0, 0, 0, 0); /* サムとトラックの色 */
+}
+
+
+/****************************************************************
+*****************************************************************
+ **** 各種切り替えた時の手紙のレイアウト */
+
+/* 修正、追加お願いします！ありがとうございます！ */
+
+/*  お願いしたい事：
+・手紙のMAX文字数を入力して数えてメモしてください
+・手紙のMAX文字数を入力してレイアウトが崩れないか確認してください */
+
+/* 備考: 
+・option 1,2,3,4,10 はこちらでやりました。参考にしてください。
+・option7~12はもっとたくさん文字数を入力できるように、手紙を長くしました。 */
+
+/* Option1 用のレイアウト (MAX189文字) */
+.layout-option1 #content-layout {
+position: absolute; 
+top: 48%; 
+left: 50%; 
+transform: translate(-50%, -50%); 
+background: none;
+padding: 20px; 
+max-width: 100%; 
+text-align: center; 
+z-index: 1;
+width: 75%;
+color: black;
+line-height: 2.5; 
+}
+
+/* Option2 用のレイアウト (MAX158文字) */
+.layout-option2 #content-layout {
+position: absolute; 
+top: 47%; 
+left: 50%; 
+transform: translate(-50%, -50%); 
+background: none;
+padding: 20px; 
+max-width: 100%; 
+text-align: left; 
+z-index: 1;
+width: 77%;
+color: #146621;
+line-height: 2.1;
+font-size: larger;
+}
+
+/* Option3 用のレイアウト (MAX85文字) */
+.layout-option3 #content-layout {
+  position: absolute; 
+  top: 55%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background: none;
+  padding: 20px; 
+  max-width: 100%; 
+  text-align: center; 
+  z-index: 1;
+  width: 58%;
+  line-height: 2.2;
+  font-size: larger;
+  color: rgb(136, 77, 87);
+}
+
+/* Option4 用のレイアウト(MAX390文字) */
+.layout-option4 #content-layout {
+  position: absolute; 
+  top: 49%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background: none;
+  padding: 0px; 
+  text-align: center; 
+  z-index: 1;
+  width: 85%;
+  color: rgb(105, 72, 72);
+  line-height: 1.75;
+}
+
+/* Option5 用のレイアウト */
+.layout-option5 #content-layout {
+position: absolute; 
+top: 41%;
+left: 55%; 
+transform: translate(-50%, -50%); 
+background: none;
+padding: 20px; 
+max-width: 100%; 
+text-align: center; 
+z-index: 1;
+width: 75%;
+color: rgb(222, 131, 26);
+line-height: 2.5;
+}
+
+/* Option6 用のレイアウト */
+.layout-option6 #content-layout {
+position: absolute; 
+top: 51%; 
+left: 50%; 
+transform: translate(-50%, -50%); 
+background: none;
+padding: 20px; 
+max-width: 100%; 
+text-align: center; 
+z-index: 1;
+width: 75%;
+color: rgba(0, 0, 0, 0.901);
+line-height: 2.5;
+}
+
+/* Option7 用のレイアウト */
+.layout-option7 #content-layout {
+position: absolute; 
+top: 50%; 
+left: 50%; 
+transform: translate(-50%, -50%); 
+background: none;
+padding: 20px; 
+max-width: 100%; 
+text-align: center; 
+z-index: 1;
+width: 75%;
+color: rgb(8, 112, 49);
+line-height: 2.5;
+}
+
+/* Option8 用のレイアウト */
+.layout-option8 #content-layout {
+position: absolute; 
+top: 45%; 
+left: 50%; 
+transform: translate(-50%, -50%); 
+background: none;
+padding: 20px; 
+max-width: 100%; 
+text-align: center; 
+z-index: 1;
+width: 75%;
+color: rgb(180, 132, 132);
+line-height: 2.5;
+}
+
+/* Option9 用のレイアウト */
+.layout-option9 #content-layout {
+position: absolute; 
+top: 64%; 
+left: 50%; 
+transform: translate(-50%, -50%); 
+background: none;
+padding: 20px; 
+max-width: 100%; 
+text-align: center; 
+z-index: 1;
+width: 75%;
+color: rgb(234, 137, 194);
+line-height: 2.5;
+}
+
+/* Option10 用のレイアウト (MAX390文字)*/
+.layout-option10 #content-layout {
+position: absolute; 
+top: 49%; 
+left: 50%; 
+transform: translate(-50%, -50%); 
+background: none;
+padding: 20px; 
+max-width: 100%; 
+text-align: center; 
+z-index: 1;
+width: 85%;
+color: white;
+line-height: 2.5;
+}
+
+/* Option11 用のレイアウト */
+.layout-option11 #content-layout {
+  position: absolute; 
+  top: 49%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background: none;
+  padding: 20px; 
+  max-width: 100%; 
+  text-align: center; 
+  z-index: 1;
+  width: 75%;
+  color: rgb(151, 143, 143);
+  line-height: 2.5;
+}
+  
+/* Option12 用のレイアウト */
+.layout-option12 #content-layout {
+  position: absolute; 
+  top: 53%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background: none;
+  padding: 20px; 
+  max-width: 100%; 
+  text-align: center; 
+  z-index: 1;
+  width: 75%;
+  color: rgb(105, 72, 72);
+  line-height: 2.5;
+}
+  
+

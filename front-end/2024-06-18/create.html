@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>未来郵便局</title>
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- アイコン -->
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-2-2/css/9-2-2.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-10/css/5-1-10.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-6/js/8-1-6.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stickyfill/2.1.0/stickyfill.min.js"></script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-10/js/5-1-10.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="common.css">
+
+<!-- google font -->
+<link href="https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&family=
+Kaisei+Opti&family=New+Tegomin&family=Kiwi+Maru&family=Potta+One&family=Noto+Sans+JP&family=
+Yomogi&family=Zen+Kurenaido&family=DotGothic16&display=swap" rel="stylesheet">
+
+<script src="create.js" defer></script>
+
+</head>
+
+<body>
+  
+<!-- ヘッダー -->
+<header class="fix_menu">
+  <div id="home" class="header-logo">
+    <a href="index.html" target="_blank"><img src="images/logo2.png" alt="Logo"></a>
+  </div>
+  <input type="checkbox" id="switch">
+  <label for="switch">
+      <p><span></span></p>
+  </label>
+
+  <!-- メニューボタンを押すと自動的に下書き保存される -->
+  <nav id="navwrap">
+      <ul class="header_menu">
+          <li><a href="menu-home.html">HOME</a></li>
+          <li><a href="menu-write.html" >WRITE</a></li>
+          <li><a href="menu-read.html">READ</a></li>
+          <li><a href="create.html"  class="menu-now">CREATE NEW</a></li>
+          <!-- <li><a href="#" id="logout">ACCOUNT</a></li> -->
+      </ul>
+  </nav>
+</header>
+  <div id="container">
+  <main id="main-area">
+    <section id="random-theme-section">
+      <h2>新しい手紙を作成していきましょう！</h2><br><br>
+      <div class="idea-box">
+      <img src="images/post-box.png" style="width: 200px;">
+      <button id="random-theme-btn">
+        <span id="random-theme-result">アイデア</span>
+      </button>
+    </div>
+    </section>
+
+    <form id="letterForm">
+    <section id="area-1" >
+        <h2>1. 手紙の各概要を記入欄に記入して下さい。<span class="must">(必須)</span></h2>
+        <p style="text-align: center;">タイトル、送信者名、受信者名は受信者が手紙の内容を開く前にも表示されます。</p>
+        <div class="form-container">
+            <div class="form-group">
+                <label for="letter-title">タイトル :</label>
+                <input type="text" id="letter-title" name="letter-title" placeholder="Title of letter" required>
+            </div>
+            <div class="form-group">
+                <label for="sender-name">送信者名 :</label>
+                <input type="text" id="sender-name" name="sender-name" placeholder="Sender name" required>
+            </div>
+            <div class="form-group">
+                <label for="receiver-name">受信者名 :</label>
+                <input type="text" id="receiver-name" name="receiver-name" placeholder="Recipient name" required>
+            </div>
+        </div>
+     </section>
+    </form>
+       
+    <div class="qr-code-options-container">
+      <section id="area-2"><br><br>
+        <h2>2. 手紙のQRコードの送信先を選択してください。<span class="must">(必須)</span></h2>
+        <p style="text-align: center;">作成した手紙はメールアドレスにQRコードの形で送信されます。</p>
+    
+        <div class="radio-tile-group">
+          <div class="input-container">
+            <input id="self" class="radio-button" type="radio" name="recipient" />
+            <div class="radio-tile">
+              <label for="self" class="radio-tile-label">アカウント登録したアドレス</label>
+            </div>
+          </div>
+
+          <div class="input-container">
+            <input id="receiver" class="radio-button" type="radio" name="recipient" />
+            <div class="radio-tile">
+              <label for="receiver" class="radio-tile-label">その他のアドレス</label>
+            </div>
+          </div>
+      </div><br><br>
+        
+      <div id="send-to-sender" class="send-to-sender">
+        <h3 style="text-align: center;"> 手紙の作成直後、あらかじめ登録された<br>
+          あなたのメール宛にQRコードが届きます。
+        </h3>
+        <p style="text-align: center;">
+          相手先には送信されませんので、ご自身で受信相手にQRコードを送信する必要があります。
+          のちほどメールからQRコードをご確認ください。
+        </p><br><br>
+        <h3 style="text-align: center;"> あなたのメールアドレス: 
+          <!-- アカウントに登録したメールアドレスをここに表示する -->
+          <span id="sender-address">user-address@gmail.com</span>
+        </h3>
+        <p>
+          送信時間を指定したい場合や、上記以外のアドレス宛てにQRコードを送信したい場合は [その他のアドレス] を選択してください。
+        </p>
+      </div>
+
+      <div id="send-to-receiver" class="send-to-receiver">
+        <h3 style="text-align: center;">2-2. 送信する日にちと時間を指定してください。</h3>
+
+        <div class="form-container">
+          <div class="form-group">
+            <label for="send-date">日にち :</label>
+            <input type="date" id="send-date" name="send-date">
+          </div>
+          <div class="form-group">
+            <label for="send-time">時間 :</label>
+            <input type="time" id="send-time" name="send-time">
+          </div>     
+        </div><br><br>
+
+        <h3 style="text-align: center;">2-3. メールアドレスを入力してください。<span class="must">(必須)</span></h3>
+
+        <div class="form-container">
+          <div class="form-group">
+            <input type="text" id="address" name="address" placeholder="Mail address">
+        </div>
+
+        <p style="text-align: center;">
+          手紙の作成後、QRコードは指定された時間に上記の<br>メールアドレス宛に送信されます。
+        </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="area-3"><br><br>
+      <h2>3. 手紙にパスワードを追加しますか？ <span class="must">(必須)</span></h2>
+      <p style="text-align: center;">パスワードは受信者がログインしていない場合に手紙を開く直前に要求されますが、パスワードがない場合は
+        QRコードからそのまま手紙の内容が表示されます。</p>
+      <div class="radio-tile-group">
+        <div class="input-container">
+          <input id="yes" class="radio-button" type="radio" name="password-choice" />
+          <div class="radio-tile">
+            <label for="yes" class="radio-tile-label" >追加する</label>
+          </div>
+        </div>
+        <div class="input-container">
+          <input id="no" class="radio-button" type="radio" name="password-choice" />
+          <div class="radio-tile">
+            <label for="no" class="radio-tile-label" >追加しない</label>
+          </div>
+        </div>
+      </div><br><br>
+
+      <div id="password-container" class="password-container">
+        <h3 style="text-align: center;">3-2. 追加する > 手紙のパスワードを入力してください。</h3>
+        <p style="text-align: center;">[１] で記入した [タイトル、送信者名、受信者名] は
+          <br>受信者がパスワードで手紙の内容を開く前にも表示されます。
+        </p><br>     
+        <div class="input-with-icon">
+          <input type="password" id="password" name="password" class="password-input" placeholder="Password" />
+          <ion-icon name="eye-off" id="toggleLetterPassword" style="  top: 50%;"></ion-icon>
+        </div>
+        
+      </div>
+    </section>
+  </div>
+
+  <section id="area-4">
+  <h2>４. お好みの封筒と便箋、フォントを1つずつ選択肢から選んで下さい。<span class="must">(必須)</span></h2>
+
+  <ul class="accordion-area">
+
+      <!-- Envelope Section -->
+      <li>
+          <section class="section4">
+              <div class="title-wrapper">
+                  <h3 class="title" id="title1">封筒：</h3>
+                  <p class="selected-text"></p>
+              </div>
+
+              <div class="box">
+                  <div class="option-box">
+                      <input type="radio" name="envelope" value="Option1" id="env1">
+                      <label for="env1">
+                          <span>未来郵便局</span>
+                          <img src="images/env1.png" aria-labelledby="env1">
+                      </label>
+                  </div>
+                  <div class="option-box">
+                      <input type="radio" name="envelope" value="Option2" id="env2">
+                      <label for="env2">
+                          <span>18世紀ヨーロッパ</span>
+                          <img src="images/env2.png" aria-labelledby="env2">
+                      </label>
+                  </div>
+                  <div class="option-box">
+                      <input type="radio" name="envelope" value="Option3" id="env3">
+                      <label for="env3">
+                          <span>ロマンチックリボン</span>
+                          <img src="images/env3.png" aria-labelledby="env3">
+                      </label>
+                  </div>
+                  <div class="option-box">
+                      <input type="radio" name="envelope" value="Option4" id="env4">
+                      <label for="env4">
+                          <span>TOP SECRET★</span>
+                          <img src="images/env4.png" aria-labelledby="env4">
+                      </label>
+                  </div>
+                  <div class="option-box">
+                    <input type="radio" name="envelope" value="Option5" id="env5">
+                    <label for="env5">
+                        <span>感謝レター</span>
+                        <img src="images/env5.png" aria-labelledby="env5">
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="envelope" value="Option6" id="env6">
+                    <label for="env6">
+                        <span>スカイブルー</span>
+                        <img src="images/env6.png" aria-labelledby="env6">
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="envelope" value="Option7" id="env7">
+                    <label for="env7">
+                        <span>ラブレター♡</span>
+                        <img src="images/env7.png" aria-labelledby="env7">
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="envelope" value="Option8" id="env8">
+                    <label for="env8">
+                        <span>日本旅行</span>
+                        <img src="images/env8.png" aria-labelledby="env8">
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="envelope" value="Option9" id="env9">
+                    <label for="env9">
+                        <span>幸運のクローバー</span>
+                        <img src="images/env9.png" aria-labelledby="env9">
+                    </label>
+                </div>
+                <div class="option-box">
+                  <input type="radio" name="envelope" value="Option10" id="env10">
+                  <label for="env10">
+                      <span>TO.FUTURE</span>
+                      <img src="images/env10.png" aria-labelledby="env10">
+                  </label>
+              </div>
+                  <div class="option-box">
+                    <input type="radio" name="envelope" value="Option11" id="env11">
+                    <label for="env11">
+                        <span>ひまわり畑</span>
+                        <img src="images/env11.png" aria-labelledby="env11">
+                    </label>
+                </div>
+                <div class="option-box">
+                  <input type="radio" name="envelope" value="Option12" id="env12">
+                  <label for="env12">
+                      <span>招待状</span>
+                      <img src="images/env12.png" aria-labelledby="env12">
+                  </label>
+              </div>
+              </div>
+          </section>
+      </li>
+
+      <!-- Letter Section -->
+      <li>
+          <section class="section4">
+              <div class="title-wrapper">
+                  <h3 class="title" id="title2">便箋：</h3>
+                  <p class="selected-text"></p>
+              </div>
+
+              <div class="box">
+
+                  <div class="option-box">
+                      <input type="radio" name="letter" value="Option1" id="letter1" data-max-chars="300">
+                      <label for="letter1">
+                          <span>未来郵便局</span>
+                          <img src="images/letter1.png" aria-labelledby="letter1">
+                          <span>(MAX300)</span>
+                      </label>
+                  </div>
+
+                  
+                  <div class="option-box">
+                      <input type="radio" name="letter" value="Option2" id="letter2" data-max-chars="300">
+                      <label for="letter2">
+                          <span>幸運のクローバー</span>
+                          <img src="images/letter2.png" aria-labelledby="letter2">
+                          <span>(MAX300)</span>
+                      </label>
+                  </div>
+
+                  <div class="option-box">
+                      <input type="radio" name="letter" value="Option3" id="letter3" data-max-chars="300">
+                      <label for="letter3">
+                          <span>おめでとう！</span>
+                          <img src="images/letter3.png" aria-labelledby="letter3">
+                          <span>(MAX300)</span>
+                      </label>
+                  </div>
+
+                  <div class="option-box">
+                      <input type="radio" name="letter" value="Option4" id="letter4" data-max-chars="300">
+                      <label for="letter4">
+                        <span>さくら</span>
+                        <img src="images/letter4.png" aria-labelledby="letter4">
+                        <span>(MAX300)</span>
+                      </label>
+                  </div>
+                  <div class="option-box">
+                    <input type="radio" name="letter" value="Option5" id="letter5" data-max-chars="300">
+                    <label for="letter5">
+                        <span>ひまわり畑</span>
+                        <img src="images/letter5.png" aria-labelledby="letter5" >
+                        <span>(MAX300)</span>
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="letter" value="Option6" id="letter6" data-max-chars="300">
+                    <label for="letter6">
+                        <span>ハロウィン</span>
+                        <img src="images/letter6.png" aria-labelledby="letter6">
+                        <span>(MAX300)</span>
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="letter" value="Option7" id="letter7" data-max-chars="300">
+                    <label for="letter7">
+                        <span>クリスマス</span>
+                        <img src="images/letter7.png" aria-labelledby="letter7">
+                        <span>(MAX300)</span>
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="letter" value="Option8" id="letter8" data-max-chars="300">
+                    <label for="letter8">
+                        <span>いつもありがとう</span>
+                        <img src="images/letter8.png" aria-labelledby="letter8">
+                        <span>(MAX300)</span>
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="letter" value="Option9" id="letter9" data-max-chars="300">
+                    <label for="letter9">
+                        <span>ハッピーバースデー</span>
+                        <img src="images/letter9.png" aria-labelledby="letter9">
+                        <span>(MAX300)</span>
+                    </label>
+                </div>
+                <div class="option-box">
+                  <input type="radio" name="letter" value="Option10" id="letter10" data-max-chars="300">
+                  <label for="letter10">
+                      <span>FROM.PAST</span>
+                      <img src="images/letter10.png" aria-labelledby="letter10">
+                      <span>(MAX300)</span>
+                  </label>
+              </div>
+              <div class="option-box">
+                <input type="radio" name="letter" value="Option11" id="letter11" data-max-chars="300">
+                <label for="letter11">
+                    <span>ロマンチックリボン</span>
+                    <img src="images/letter11.png" aria-labelledby="lettee11">
+                    <span>(MAX300)</span>
+                </label>
+            </div>
+            <div class="option-box">
+              <input type="radio" name="letter" value="Option12" id="letter12" data-max-chars="300">
+              <label for="letter12">
+                <span>日本旅行</span>
+                 <img src="images/letter12.png" aria-labelledby="letter12">
+                 <span>(MAX300)</span>
+              </label>
+          </div>
+              </div>
+          </section>
+      </li>
+
+    <!-- Font Section -->
+    <li>
+        <section class="section4">
+            <div class="title-wrapper">
+                <h3 class="title" id="title3">フォント：</h3>
+                <p class="selected-text"></p>
+            </div>
+            <div class="box">
+                <div class="option-box font-opt-box">
+                    <input type="radio" name="font" value="Option1" id="font1">
+                    <label for="font1" class="font1">
+                        <span>Kaisei Opti :</span>
+                        <p>手紙を書こう！<br>Let's write a letter</p>  
+                  
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="font" value="Option2" id="font2">
+                    <label for="font2" class="font2">
+                        <span>New Tegomin :</span>
+                        <p>手紙を書こう！<br>Let's write a letter</p>
+                              
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="font" value="Option3" id="font3">
+                    <label for="font3" class="font3">
+                        <span>Kiwi Maru :</span>
+                        <p>手紙を書こう！<br>Let's write a letter</p>
+          
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="font" value="Option4" id="font4">
+                    <label for="font4" class="font4">
+                        <span>Potta One :</span>
+                        <p>てがみをかこう！<br>Let's write a letter</p>
+            
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="font" value="Option5" id="font5">
+                    <label for="font5" class="font5">
+                        <span>Noto Sans JP :</span>
+                        <p>手紙を書こう！<br>Let's write a letter</p>
+      
+                    </label>
+                </div>
+                <div class="option-box" >
+                    <input type="radio" name="font" value="Option6" id="font6">
+                    <label for="font6" class="font6">
+                      <span>Zen Antique Soft :</span>
+                        <p>手紙を書こう！<br>Let's write a letter</p>
+
+                    </label>
+                   </div>
+
+                   <div class="option-box">
+                    <input type="radio" name="font" value="Option7" id="font7">
+                    <label for="font7" class="font7">
+                        <span>Yomogi :</span>
+                        <p>てがみをかこう<br>Let's write a letter</p>
+            
+                    </label>
+                </div>
+                <div class="option-box">
+                    <input type="radio" name="font" value="Option8" id="font8">
+                    <label for="font8" class="font8">
+                        <span>DotGothic16 :</span>
+                        <p>手紙を書こう！<br>Let's write a letter</p>
+      
+                    </label>
+                </div>
+                <div class="option-box" >
+                    <input type="radio" name="font" value="Option9" id="font9">
+                    <label for="font9" class="font9">
+                      <span>Zen Kurenaido :</span>
+                        <p>手紙を書こう！<br>Let's write a letter</p>
+                    </label>
+                   </div>                  
+                </div>
+            </section>
+            </li>
+         </ul>
+    </section>
+
+     <!-- Image file Section -->
+  <section id="area-5" >
+    <h2>５. 手紙に添付する画像ファイルを選択してください。（任意）</h2>
+    <div class="form-container">
+      <div class="form-group" >
+        <div class="custom-file-upload">
+          <input type="file" id="image-upload" name="image-upload" accept="image/*">
+          <label for="image-upload" id="upload-label">画像をアップロード</label>
+          <span id="file-name"></span>
+          <div id="image-preview"  class="image-preview">
+            <img src="path/to/image.jpg" alt="画像の説明" style="display:none">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal">
+      <img id="modal-image" src="" alt="拡大表示される画像">
+    </div>
+  </section>
+
+<!-- Contents Section -->
+<section id="area-6">
+  <h2>６. 手紙の内容を記入してください。<span class="must" >(必須)</span>
+    <span id="char-count" style="color: black;">[ 0/400 ]</span></h2>
+
+  <!-- 各便箋の最適文字数を表示する -->
+  <p id="selected-letter-info">便箋を選択してから内容を記入してください。</p>
+  <div class="form-container">
+    <div class="form-group">
+      <textarea id="letter-content" name="letter-content" 
+        placeholder="手紙の内容を入力してください" maxlength="400"></textarea>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <aside id="sub-area">
+    <nav>
+      <h3>手紙の作成手順</h3>
+        <ul id="g-navi">
+          <li><a href="#area-1">１．手紙の概要の記入</a></li>
+          <li><a href="#area-2">２．送信先・送信時間の指定</a></li>
+          <li><a href="#area-3">３．パスワード有無の選定</a></li>
+          <li><a href="#area-4">４．封筒・便箋・フォントの選択</a></li>
+          <li><a href="#area-5">５．添付画像の選択</a></li>
+          <li><a href="#area-6">６．手紙の内容の記入</a></li>
+        </ul>
+      
+      <div class="create-btn">
+        <button id="reset">全てリセット</button>
+        <button id="save-draft">下書き保存する</button>
+      </div>
+
+      <p>記入漏れはありませんか？全ての項目を終えたら<br>
+        プレビューにお進みください。</p>
+
+      <button id="save-preview">プレビューに進む</button>
+    </nav>
+  </aside>
+</div>
+
+<div>
+    <footer id="footer">
+    <p id="page-top"><a href="#">TOP</a></p> 
+    <small>&#9426; Future Post Office 2024</small>  
+  </footer>
+</div>
+
+<script src="nav.js"></script>
+
+</body>
+</html>

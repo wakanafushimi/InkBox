@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>未来郵便局</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.css">
+
+  <script src="nav.js" defer></script>
+</head>
+
+<body  class="home-body tab-body">
+   <!-- ヘッダー -->
+   <header class="fix_menu">
+    <div id="home" class="header-logo">
+        <a href="index.html" target="_blank"><img src="images/logo2.png" alt="Logo"></a>
+    </div>
+    <input type="checkbox" id="switch">
+    <label for="switch">
+        <p><span></span></p>
+    </label>
+    <nav id="navwrap">
+        <ul class="header_menu">
+            <li><a href="menu-home.html" >HOME</a></li>
+            <li><a href="menu-write.html" >WRITE</a></li>
+            <li><a href="menu-read.html" class="menu-now" >READ</a></li>
+            <li><a href="create.html" >CREATE NEW</a></li>
+            <li><a href="#" id="logout">ACCOUNT</a></li>
+        </ul>
+    </nav>
+  </header>
+
+        <!-- アカウント情報 モーダル -->
+        <div id="logoutModal" class="acct-modal">
+            <p>user name</p>
+            <p>user-address@gmail.com</p><br>
+            <div id="modalContent1" class="modal-section">
+                <p>ログアウトしますか？</p>
+              <button class="acct-modal-btn" id="confirmLogoutBtn">ログアウト</button>
+              <h5 class="switch-section" data-target="modalContent2">アカウントの削除をする</h5>
+            </div>
+            <div id="modalContent2" class="modal-section hidden">
+              <p>アカウントを削除しますか？</p>
+              <button class="acct-modal-btn" id="confirmDeleteBtn">アカウントを削除する</button><br>
+              <h5 class="switch-section" data-target="modalContent1">ログアウトする</h5>
+            </div>
+          </div>
+
+<div style="height: 100px;"></div>
+
+    <div class="tab" id="read-tab">
+      <ul class="tab__menu">
+        <li class="tab__menu-item is-active" data-tab="04">NEW ARRIVED</li>
+        <li class="tab__menu-item" data-tab="05">ARCHIVE</li>
+      </ul>
+      <div class="tab__panel">
+
+         <!-- タブ１ -->
+        <div class="tab__panel-box tab__panel-box004 is-show" data-panel="04">
+            <p class="tab__panel-text">新着の手紙一覧 (全何件)</p>
+            <p class="tab__panel-text2">手紙を選択して読んでみましょう。</p>
+          <div class="my-letter-container">
+            
+          
+            <!-- こんな感じで手紙を一覧に表示します -->
+            <div class="my-letter-box">
+                <img src="images/env1.png" alt="Envelope Image 1">
+                <ul>
+                  <li>TITLE OF LETTER</li>
+                  <li>DATE RECEIVED</li>
+                  <li>SENDER NAME FROM</li>
+                </ul>
+              </div>
+  
+          </div>
+        </div>
+
+         <!-- タブ２ -->
+        <div class="tab__panel-box tab__panel-box005" data-panel="05">
+          <p class="tab__panel-text">過去にもらった手紙一覧 (全何件)</p>
+          <p class="tab__panel-text2">手紙を選択すると読み返せます。相手に返信も書いてみましょう。</p>
+          <div class="my-letter-container">
+
+            <!-- こんな感じで手紙を一覧に表示します -->
+            <div class="my-letter-box">
+              <img src="images/env1.png" alt="Envelope Image 1">
+              <ul>
+                <li>TITLE OF LETTER</li>
+                <li>DATE RECEIVED</li>
+                <li>SENDER NAME FROM</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 100px;"></div>
+    <div style="height: 100px;"></div>
+
+    <footer>
+      <div class="theme">
+              <div class="theme-switcher">
+                  <input type="radio" id="dark-theme" name="themes" />
+                  <label for="dark-theme">
+                      <span>
+                          <i data-feather="moon"></i>Dark
+                      </span>
+                  </label>
+                  <input type="radio" id="birds-theme" name="themes" checked />
+                  <label for="birds-theme">
+                      <span>
+                          <i data-feather="send"></i>Birds
+                      </span>
+                  </label>
+                  <span class="slider"></span>
+              </div>
+          </div>
+      <small>&#9426; Future Post Office 2024</small>
+      <div></div> 
+      <div></div> 
+      <p id="page-top"><a href="#"><i data-feather="arrow-up"></i></a></p> 
+    </footer>
+    
+    <div id="background"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+    <script src="theme.js" ></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    
+      
+    
+</body>
+</html>
