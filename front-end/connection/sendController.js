@@ -13,68 +13,91 @@ const server = http.createServer((_, res) => {
 const port = 3000;
 server.listen(port, function () {
   console.log("Node.js Server Started:" + port);
-  loginHandle();
-  registerHandle();
-  exitHandle();
+  postHandle();
+  postOpenHandle();
+  readHandle();
+  readWithPwHandle();
 });
 
-// /user/exit
-function exitHandle() {
+// /post
+function postHandle() {
+  const requestBody = JSON.stringify({
+    mailId: "",
+    mailPreId: "",
+    url: "",
+    userId: "",
+  });
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("token", token);
+  const requestOptions = {
+    method: "POST",
+    body: requestBody,
+    headers: myHeaders,
+  };
+  fetch(`${host}/post`, requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log("post");
+      console.log(result);
+    })
+    .catch((error) => console.log("error", error));
+}
+
+// /post/open
+function postOpenHandle() {
+  const requestBody = JSON.stringify({
+    mailId: "",
+    password: "",
+    userId: "",
+  });
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("token", token);
+  const requestOptions = {
+    method: "PUT",
+    body: requestBody,
+    headers: myHeaders,
+  };
+  fetch(`${host}/post/open`, requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log("postOpen");
+      console.log(result);
+    })
+    .catch((error) => console.log("error", error));
+}
+
+// /read
+function readHandle(id) {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   const requestOptions = {
     method: "GET",
     headers: myHeaders,
   };
-  fetch(`${host}/user/exit`, requestOptions)
+  fetch(`${host}/post/read/${id}`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
-      console.log("exit");
+      console.log("read");
       console.log(result);
     })
     .catch((error) => console.log("error", error));
 }
 
-// /user/login
-function loginHandle() {
-  const requestBody = JSON.stringify({
-    email: "test@test.com",
-    password: "test",
-  });
+// /post/read_with_psw
+function readWithPwHandle() {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("token", token);
   const requestOptions = {
-    method: "POST",
-    body: requestBody,
+    method: "GET",
     headers: myHeaders,
   };
-  fetch(`${host}/user/login`, requestOptions)
+  fetch(`${host}/post/read_with_psw`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
-      console.log("login");
-      console.log(result);
-    })
-    .catch((error) => console.log("error", error));
-}
-
-// /user/register
-function registerHandle() {
-  const requestBody = JSON.stringify({
-    email: "test1@test.com",
-    password: "test",
-    username: "test1",
-  });
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  const requestOptions = {
-    method: "POST",
-    body: requestBody,
-    headers: myHeaders,
-  };
-  fetch(`${host}/user/register`, requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-      console.log("register");
+      console.log("readWithPw");
       console.log(result);
     })
     .catch((error) => console.log("error", error));
