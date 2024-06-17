@@ -1,17 +1,40 @@
+// import express from "express";
+// import bodyParser from "body-parser";
+// import fetch from "node-fetch";
+// import { host, token } from "./host.js";
+
+// const app = express();
+// app.use(bodyParser.json());
+// app.use(express.static("public"));
+
+// const port = 3000;
+// app.listen(port, function () {
+//   console.log("Node.js Server Started: " + port);
+// });
+
+
+
+//Node.jsバージョン: Node.js v20.14.0のコードです↓ （by もえみ）
 import express from "express";
 import bodyParser from "body-parser";
 import fetch from "node-fetch";
-import { host, token } from "./host.js";
+import pkg from './host.js';
+
+const { host, token } = pkg;
+
+async function startHosting() {
+  console.log(`Hosting on ${host} with token ${token}`);
+}
+
+startHosting();
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static("front-end")); //もえみのフォルダ名
 
-const port = 3000;
-app.listen(port, function () {
-  console.log("Node.js Server Started: " + port);
-});
 
+
+// 既存のコード
 // /user/login
 app.post("/user/login", (req, res) => {
   const { email, password } = req.body;
