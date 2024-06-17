@@ -6,8 +6,6 @@
 // export const token =
 //   "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTgzNTY4NDgsInVzZXJJZCI6MX0.BzEz2MO3juAiNO-DCUCfuLPbh5IwK1VLctQmfLbUZjE"; // 必要に応じてトークンなどを追加
 
-
-
 //Node.jsバージョン: Node.js v20.14.0のコードです↓ （by もえみ）
 module.exports = {
   host: 'http://52.72.215.5:8080',
