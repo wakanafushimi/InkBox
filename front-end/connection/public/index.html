@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./client.js" defer></script>
+</head>
+
+<body>
+    <!-- ファイル読み込み -->
+    <!-- <script>
+        function uploader() {
+            var formData = new FormData()
+            formData.append("file", fileInputElement.files[0])
+            console.log(formData);
+        }
+    </script>
+    <form>
+        <input type="file" id="file" />
+        <button onclick="uploader()">Click</button>
+    </form> -->
+
+    <!-- /user/login -->
+    <form action="/user/login" method="post" id="loginForm">
+        <input type="text" name="email" id="email" />
+        <input type="password" name="password" id="password" />
+        <input type="submit" />
+    </form>
+
+    <!-- /user/register -->
+    <form action="/user/register" method="post" id="registerForm">
+        <input type="text" name="email" id="email" />
+        <input type="password" name="password" id="password" />
+        <input type="text" name="username" id="username" />
+        <input type="submit" />
+    </form>
+</body>
+
+</html>

@@ -15,29 +15,9 @@ app.listen(port, function () {
   console.log("Node.js Server Started: " + port);
 });
 
-// // サーバー作成
-// const server = http.createServer((_, res) => {
-//   res.writeHead(200, {
-//     "Content-Type": "text/html; charset=utf-8",
-//   });
-// });
-
-// // サーバー起動
-// const port = 3000;
-// server.listen(port, function () {
-//   console.log("Node.js Server Started:" + port);
-//   // fromHandle(1);
-//   // newHandle();
-//   // openHandle(1);
-//   // recHandle(1);
-//   // toHandle(1);
-//   // updateHandle();
-//   uploadHandle();
-//   // deleteHandle();
-// });
-
 // /mail/from/{id}
-app.get(`mail/from/${id}`, (req, res) => {
+app.get("/mail/from/:id", (req, res) => {
+  const { id } = req.params;
   const myHeaders = {
     "Content-Type": "application/json",
   };
