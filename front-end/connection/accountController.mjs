@@ -12,13 +12,11 @@
 //   console.log("Node.js Server Started: " + port);
 // });
 
-
-
-//Node.jsバージョン: Node.js v20.14.0のコードです↓ （by もえみ）
+//以下修正バージョン
 import express from "express";
 import bodyParser from "body-parser";
 import fetch from "node-fetch";
-import pkg from './host.js';
+import pkg from "./host.js";
 
 const { host, token } = pkg;
 
@@ -32,9 +30,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static("front-end")); //もえみのフォルダ名
 
-
-
-// 既存のコード
+//以下修正なし
 // /user/login
 app.post("/user/login", (req, res) => {
   const { email, password } = req.body;

@@ -1,19 +1,38 @@
-import express from "express";
-import bodyParser from "body-parser";
-import fetch from "node-fetch";
-import { host, token } from "./host.js";
+// import express from "express";
+// import bodyParser from "body-parser";
+// import fetch from "node-fetch";
+// import { host, token } from "./host.js";
 
+// const app = express();
+// app.use(bodyParser.json());
+// app.use(express.static("public"));
+
+// const port = 3000;
+// app.listen(port, function () {
+//   console.log("Node.js Server Started: " + port);
+// });
+
+// ファイルアップロード関係
 // const fs = require("fs");
 // const path = require("path");
 
+//以下修正バージョン
+import express from "express";
+import bodyParser from "body-parser";
+import fetch from "node-fetch";
+import pkg from "./host.js";
+
+const { host, token } = pkg;
+
+async function startHosting() {
+  console.log(`Hosting on ${host} with token ${token}`);
+}
+
+startHosting();
+
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static("public"));
-
-const port = 3000;
-app.listen(port, function () {
-  console.log("Node.js Server Started: " + port);
-});
+app.use(express.static("front-end")); //もえみのフォルダ名
 
 // /mail/from/{id}
 app.get("/mail/from/:id", (req, res) => {
